@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unveiling Iñupiaq Heritage in 'Never Alone'</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Spectral:ital,wght@0,300;0,400;0,600;1,300&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#030d1c;
+  --card:rgba(8,22,44,0.9);
+  --card2:rgba(5,16,35,0.97);
+  --cyan:#00c8ff;
+  --cyan-glow:rgba(0,200,255,0.18);
+  --gold:#f5a623;
+  --text:#b8d8f0;
+  --text-bright:#e8f4ff;
+  --text-dim:rgba(120,180,220,0.55);
+  --border:rgba(0,200,255,0.2);
+  --ease:0.42s cubic-bezier(0.4,0,0.2,1);
+}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Spectral',Georgia,serif;line-height:1.75;min-height:100vh;overflow-x:hidden;}
+
+/* Aurora Background */
+.aurora{position:fixed;inset:0;z-index:0;pointer-events:none;}
+.aurora::before{
+  content:'';position:absolute;width:200%;height:200%;top:-50%;left:-50%;
+  background:
+    radial-gradient(ellipse 80% 50% at 15% -8%, rgba(0,200,255,0.14) 0%,transparent 58%),
+    radial-gradient(ellipse 60% 40% at 82% 4%, rgba(0,232,140,0.08) 0%,transparent 52%),
+    radial-gradient(ellipse 50% 55% at 50% 108%, rgba(90,40,210,0.10) 0%,transparent 55%);
+  animation:auroraMove 22s ease-in-out infinite;
+}
+@keyframes auroraMove{
+  0%,100%{transform:translate(0,0) scale(1);}
+  33%{transform:translate(-3%,2%) scale(1.05);}
+  66%{transform:translate(2%,-1%) scale(0.97);}
+}
+
+/* Starfield */
+.stars{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
+.star{position:absolute;background:#fff;border-radius:50%;opacity:0;animation:twinkle var(--d,4s) var(--delay,0s) ease-in-out infinite;}
+@keyframes twinkle{0%,100%{opacity:0;}50%{opacity:var(--op,0.5);}}
+
+/* Layout */
+.wrap{position:relative;z-index:1;max-width:980px;margin:0 auto;padding:0 22px 90px;}
+
+/* Header */
+.site-header{
+  position:sticky;top:0;z-index:200;
+  background:rgba(2,10,24,0.96);
+  border-bottom:1px solid var(--border);
+  backdrop-filter:blur(16px);
+  padding:0 22px;
+}
+.header-inner{max-width:980px;margin:0 auto;padding:10px 0;display:flex;flex-direction:column;gap:7px;}
+.header-top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+.site-title{
+  font-family:'Cinzel',serif;font-size:clamp(10px,1.7vw,14px);font-weight:700;
+  color:var(--cyan);letter-spacing:.07em;text-transform:uppercase;
+  text-shadow:0 0 18px rgba(0,200,255,.45);
+}
+.nav-buttons{display:flex;gap:5px;flex-wrap:wrap;}
+.nav-btn{
+  font-family:'Share Tech Mono',monospace;font-size:10px;padding:5px 11px;
+  background:transparent;border:1px solid var(--border);color:var(--text-dim);
+  cursor:pointer;letter-spacing:.12em;text-transform:uppercase;
+  transition:var(--ease);border-radius:3px;
+}
+.nav-btn:hover,.nav-btn.active{border-color:var(--cyan);color:var(--cyan);background:rgba(0,200,255,.07);}
+.progress-row{display:flex;align-items:center;gap:10px;}
+.progress-label{font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--text-dim);letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;}
+.prog-dots{display:flex;gap:6px;}
+.prog-dot{
+  width:30px;height:5px;border-radius:3px;background:rgba(0,200,255,0.15);
+  border:none;cursor:pointer;transition:var(--ease);padding:0;
+  position:relative;
+}
+.prog-dot::after{content:attr(data-label);position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);
+  font-family:'Share Tech Mono',monospace;font-size:8px;color:var(--text-dim);white-space:nowrap;pointer-events:none;opacity:0;transition:.2s;}
+.prog-dot:hover::after{opacity:1;}
+.prog-dot.visited{background:var(--cyan);box-shadow:0 0 8px rgba(0,200,255,.6);}
+.prog-dot.current{background:var(--gold);box-shadow:0 0 10px rgba(245,166,35,.7);}
+
+/* Hero */
+.hero{text-align:center;padding:58px 0 36px;}
+.hero-eyebrow{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:.28em;color:var(--text-dim);text-transform:uppercase;margin-bottom:18px;}
+.hero-title{font-family:'Cinzel',serif;font-size:clamp(20px,4.5vw,42px);font-weight:700;color:var(--text-bright);line-height:1.2;margin-bottom:14px;}
+.hero-title em{color:var(--cyan);font-style:normal;text-shadow:0 0 28px rgba(0,200,255,.4);}
+.hero-body{font-size:15px;color:var(--text-dim);font-style:italic;max-width:540px;margin:0 auto 28px;}
+.hero-cta{
+  display:inline-block;font-family:'Share Tech Mono',monospace;font-size:11px;
+  letter-spacing:.15em;padding:9px 22px;border:1px solid var(--cyan);
+  color:var(--cyan);text-transform:uppercase;cursor:pointer;background:var(--cyan-glow);
+  transition:var(--ease);border-radius:4px;
+}
+.hero-cta:hover{background:rgba(0,200,255,.25);box-shadow:0 0 20px rgba(0,200,255,.2);}
+
+/* Separator */
+.sep{height:1px;background:linear-gradient(90deg,transparent,rgba(0,200,255,.35),transparent);margin:38px 0;}
+
+/* Section Label */
+.section-label{
+  font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:.25em;
+  text-transform:uppercase;color:var(--text-dim);margin-bottom:14px;
+  display:flex;align-items:center;gap:10px;
+}
+.section-label::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* Geographic / Map Section */
+.geo-intro{font-size:13.5px;color:var(--text-dim);font-style:italic;max-width:640px;margin-bottom:18px;}
+.map-card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:22px;position:relative;overflow:hidden;}
+.map-svg-wrap{width:100%;display:flex;justify-content:center;}
+.alaska-map{width:100%;max-width:560px;height:auto;}
+.pin-label{font-family:'Share Tech Mono',monospace;font-size:9.5px;fill:var(--text-bright);letter-spacing:.04em;}
+.pin-sub{font-family:'Share Tech Mono',monospace;font-size:7.5px;fill:var(--text-dim);letter-spacing:.08em;}
+.map-caption{margin-top:14px;font-size:10.5px;color:var(--text-dim);font-style:italic;text-align:center;}
+.map-key{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:9px;margin-top:18px;}
+.map-key-item{
+  background:rgba(0,200,255,.04);border:1px solid var(--border);border-left:3px solid var(--cyan);
+  border-radius:4px;padding:9px 13px;
+}
+.map-key-place{font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--cyan);letter-spacing:.1em;text-transform:uppercase;margin-bottom:3px;}
+.map-key-desc{font-size:12px;color:var(--text);line-height:1.6;}
+
+/* Module Cards */
+.modules{display:flex;flex-direction:column;gap:13px;margin-top:8px;}
+
+.module-card{
+  border-radius:7px;background:var(--card);
+  border:1px solid var(--border);border-left:3px solid var(--border);
+  overflow:hidden;cursor:pointer;
+  transition:border-color var(--ease),box-shadow var(--ease);
+}
+.module-card:hover{
+  border-color:var(--m-color,var(--cyan));
+  border-left-color:var(--m-color,var(--cyan));
+  box-shadow:0 0 22px rgba(0,200,255,.08);
+}
+.module-card.open{
+  border-color:var(--m-color,var(--cyan));
+  border-left-color:var(--m-color,var(--cyan));
+  box-shadow:0 0 30px rgba(0,200,255,.12);
+}
+
+.module-header{display:flex;align-items:center;gap:14px;padding:16px 18px;user-select:none;}
+.module-num{
+  font-family:'Cinzel',serif;font-size:30px;font-weight:700;
+  color:var(--m-color,var(--cyan));opacity:.75;min-width:44px;line-height:1;
+  text-shadow:0 0 14px var(--m-color,var(--cyan));
+}
+.module-icon{font-size:22px;min-width:30px;text-align:center;filter:drop-shadow(0 0 6px rgba(255,255,255,.2));}
+.module-meta{flex:1;}
+.module-title{font-family:'Cinzel',serif;font-size:clamp(13px,2.2vw,16px);font-weight:600;color:var(--text-bright);letter-spacing:.04em;text-transform:uppercase;margin-bottom:2px;}
+.module-sub{font-size:12px;color:var(--text-dim);font-style:italic;margin-bottom:6px;}
+.module-tags{display:flex;gap:5px;flex-wrap:wrap;}
+.tag{font-family:'Share Tech Mono',monospace;font-size:8px;letter-spacing:.1em;padding:2px 8px;border-radius:10px;border:1px solid var(--m-color,var(--cyan));color:var(--m-color,var(--cyan));opacity:.65;}
+.module-chevron{font-size:13px;color:var(--text-dim);transition:transform var(--ease),color var(--ease);min-width:20px;text-align:center;}
+.module-card.open .module-chevron{transform:rotate(180deg);color:var(--m-color,var(--cyan));}
+
+/* Module Body (collapsible) */
+.module-body{max-height:0;overflow:hidden;transition:max-height .55s ease;}
+.module-card.open .module-body{max-height:1300px;}
+.module-inner{border-top:1px solid var(--border);}
+
+/* Tabs */
+.tabs{display:flex;background:rgba(0,0,0,.25);border-bottom:1px solid var(--border);}
+.tab-btn{
+  flex:1;padding:10px 10px;background:none;border:none;border-bottom:2px solid transparent;
+  color:var(--text-dim);cursor:pointer;font-family:'Share Tech Mono',monospace;
+  font-size:10px;letter-spacing:.09em;text-transform:uppercase;
+  transition:var(--ease);margin-bottom:-1px;
+}
+.tab-btn:hover{color:var(--text-bright);}
+.tab-btn.active{color:var(--m-color,var(--cyan));border-bottom-color:var(--m-color,var(--cyan));}
+
+/* Tab Pane */
+.tab-pane{display:none;padding:22px 22px 26px;animation:paneIn .3s ease;}
+.tab-pane.active{display:block;}
+@keyframes paneIn{from{opacity:0;transform:translateY(7px);}to{opacity:1;transform:translateY(0);}}
+
+.tab-heading{font-family:'Cinzel',serif;font-size:19px;font-weight:600;color:var(--text-bright);margin-bottom:11px;}
+.tab-body{font-size:14.5px;line-height:1.8;color:var(--text);margin-bottom:18px;}
+
+.fact-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:9px;margin-bottom:18px;}
+.fact-box{
+  background:rgba(0,200,255,.04);border:1px solid var(--border);
+  border-left:3px solid var(--m-color,var(--cyan));border-radius:4px;padding:9px 13px;
+}
+.fact-key{font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--m-color,var(--cyan));letter-spacing:.12em;text-transform:uppercase;margin-bottom:3px;}
+.fact-val{font-size:13px;color:var(--text-bright);}
+
+.insight-box{
+  padding:14px 18px;
+  background:linear-gradient(135deg,rgba(0,200,255,.07),rgba(0,200,255,.02));
+  border:1px solid var(--border);border-left:4px solid var(--m-color,var(--cyan));
+  border-radius:4px;
+}
+.insight-label{font-family:'Share Tech Mono',monospace;font-size:8px;letter-spacing:.22em;color:var(--m-color,var(--cyan));text-transform:uppercase;margin-bottom:7px;}
+.insight-text{font-size:13.5px;font-style:italic;color:var(--text-bright);line-height:1.72;}
+
+/* Glossary */
+.glos-overlay{
+  position:fixed;inset:0;background:rgba(0,0,0,.52);z-index:300;
+  opacity:0;pointer-events:none;transition:opacity var(--ease);
+}
+.glos-overlay.open{opacity:1;pointer-events:all;}
+.glos-panel{
+  position:absolute;right:-380px;top:0;bottom:0;width:360px;
+  background:rgba(4,13,28,.98);border-left:1px solid var(--border);
+  overflow-y:auto;transition:right var(--ease);padding:24px;backdrop-filter:blur(18px);
+}
+.glos-overlay.open .glos-panel{right:0;}
+.glos-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;padding-bottom:12px;border-bottom:1px solid var(--border);}
+.glos-title{font-family:'Cinzel',serif;font-size:17px;color:var(--cyan);letter-spacing:.1em;}
+.glos-close{
+  background:none;border:1px solid var(--border);color:var(--text-dim);
+  width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:13px;
+  display:flex;align-items:center;justify-content:center;transition:var(--ease);
+}
+.glos-close:hover{color:var(--cyan);border-color:var(--cyan);}
+.glos-item{margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid rgba(0,200,255,.07);}
+.glos-item:last-child{border-bottom:none;}
+.glos-word{font-family:'Cinzel',serif;font-size:12px;font-weight:700;color:var(--cyan);letter-spacing:.15em;text-transform:uppercase;margin-bottom:5px;}
+.glos-def{font-size:12.5px;color:var(--text);line-height:1.72;}
+
+/* References */
+.refs-section{margin-top:55px;padding:26px 28px;background:var(--card);border:1px solid var(--border);border-radius:7px;}
+.refs-title{font-family:'Cinzel',serif;font-size:13px;font-weight:700;color:var(--cyan);letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px;}
+.refs-sub{font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--text-dim);letter-spacing:.1em;margin-bottom:16px;}
+.refs-list{list-style:none;display:flex;flex-direction:column;gap:14px;}
+.refs-list li{font-size:12px;color:var(--text-dim);line-height:1.7;padding-left:26px;text-indent:-26px;}
+.refs-list a{color:var(--cyan);text-decoration:none;word-break:break-all;}
+.refs-list a:hover{text-decoration:underline;}
+.refs-list em{color:var(--text-bright);font-style:italic;}
+
+/* Footer */
+.footer-note{text-align:center;padding:30px 0;font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--text-dim);letter-spacing:.1em;}
+
+/* Responsive */
+@media(max-width:580px){
+  .header-top{flex-direction:column;align-items:flex-start;}
+  .tabs{flex-wrap:wrap;}
+  .tab-btn{font-size:9px;padding:8px 6px;flex:1 1 33%;}
+  .fact-grid{grid-template-columns:1fr 1fr;}
+  .module-num{font-size:22px;min-width:34px;}
+  .map-key{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<div class="aurora" aria-hidden="true"></div>
+<div class="stars" id="stars" aria-hidden="true"></div>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-top">
+      <div class="site-title">Iñupiaq Heritage in 'Never Alone'</div>
+      <nav class="nav-buttons" aria-label="Main navigation">
+        <button class="nav-btn active" onclick="scrollToTop()">HOME</button>
+        <button class="nav-btn" onclick="scrollToModules()">MODULES</button>
+        <button class="nav-btn" onclick="scrollToMap()">MAP</button>
+        <button class="nav-btn" onclick="scrollToRefs()">SOURCES</button>
+        <button class="nav-btn" onclick="openGlossary()">GLOSSARY</button>
+      </nav>
+    </div>
+    <div class="progress-row" aria-label="Module progress">
+      <span class="progress-label">Journey Progress:</span>
+      <div class="prog-dots" id="progDots">
+        <button class="prog-dot" data-label="Intro" onclick="goToModule(0)" title="Module 1: Intro"></button>
+        <button class="prog-dot" data-label="Folklore" onclick="goToModule(1)" title="Module 2: Folklore"></button>
+        <button class="prog-dot" data-label="Traditions" onclick="goToModule(2)" title="Module 3: Traditions"></button>
+        <button class="prog-dot" data-label="Survival" onclick="goToModule(3)" title="Module 4: Survival"></button>
+        <button class="prog-dot" data-label="Culture" onclick="goToModule(4)" title="Module 5: Culture"></button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- MAIN -->
+<main class="wrap">
+
+  <!-- Hero -->
+  <section class="hero" id="top">
+    <p class="hero-eyebrow">An Interactive Educational Journey for Undergraduates</p>
+    <h1 class="hero-title">Unveiling Iñupiaq Heritage in<br><em>'Never Alone'</em></h1>
+    <p class="hero-body">Explore how the 2014 game Kisima Inŋitchuŋa ("I am Not Alone") preserves and shares the living culture of the Iñupiaq people of Alaska. Click any module below to begin your journey.</p>
+    <button class="hero-cta" onclick="scrollToModules()">Begin Exploring</button>
+  </section>
+
+  <div class="sep"></div>
+
+  <!-- Geographic Context / Map -->
+  <div class="section-label">Geographic Context</div>
+  <p class="geo-intro">The Iñupiat are the Inuit-Eskimo-speaking inhabitants of northern and northwestern Alaska, residing across roughly three dozen villages and towns from the Bering Strait to the Mackenzie Delta region (Burch, 1998). The stylized map below highlights the traditional Northwest Alaska homeland and several places referenced throughout this guide.</p>
+  <section class="map-card" id="geo">
+    <div class="map-svg-wrap">
+      <svg viewBox="0 0 600 480" class="alaska-map" role="img" aria-label="Stylized low-poly map of Alaska showing the traditional Iñupiaq homeland of Northwest Alaska and key places referenced in this guide">
+        <defs>
+          <linearGradient id="alaskaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#15446b"/>
+            <stop offset="55%" stop-color="#0f3f63"/>
+            <stop offset="100%" stop-color="#0a2e4d"/>
+          </linearGradient>
+          <radialGradient id="glowGrad" cx="50%" cy="38%" r="65%">
+            <stop offset="0%" stop-color="#00c8ff" stop-opacity="0.10"/>
+            <stop offset="100%" stop-color="#00c8ff" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+
+        <rect x="0" y="0" width="600" height="480" fill="#040f20"/>
+        <rect x="0" y="0" width="600" height="480" fill="url(#glowGrad)"/>
+
+        <path d="M30,158 Q300,128 570,162" fill="none" stroke="#00c8ff" stroke-opacity="0.35" stroke-width="1" stroke-dasharray="2 5"/>
+        <text x="565" y="152" class="pin-sub" text-anchor="end">ARCTIC CIRCLE</text>
+
+        <polygon points="130,90 230,55 330,50 410,65 460,90 480,130 470,190 450,250 430,290 460,310 495,340 510,380 495,420 470,430 440,400 415,365 390,340 360,330 345,355 320,345 330,320 300,330 270,345 240,360 210,375 180,390 150,405 120,415 90,425 60,432 30,438 60,420 100,400 140,385 170,360 150,330 130,300 115,270 105,240 80,225 50,215 30,210 55,200 85,195 100,175 95,155 110,140 120,115 130,90"
+          fill="url(#alaskaGrad)" stroke="#3fc4f2" stroke-width="1.8" stroke-linejoin="round"/>
+
+        <g stroke="#5fd4ff" stroke-opacity="0.28" stroke-width="0.6" fill="none">
+          <line x1="230" y1="55" x2="300" y2="150"/>
+          <line x1="330" y1="50" x2="300" y2="150"/>
+          <line x1="300" y1="150" x2="330" y2="320"/>
+          <line x1="300" y1="150" x2="150" y2="330"/>
+          <line x1="300" y1="150" x2="105" y2="240"/>
+          <line x1="430" y1="290" x2="390" y2="340"/>
+          <line x1="150" y1="330" x2="150" y2="405"/>
+        </g>
+
+        <polygon points="135,95 150,102 142,135 126,146 116,138 100,152 103,172 90,193 62,198 35,208 58,213 82,222 103,236 118,265 133,295 118,300 100,270 88,235 68,222 45,215 60,205 88,200 102,178 98,158 113,143 124,118 133,95"
+          fill="#00c8ff" fill-opacity="0.16" stroke="#5fd4ff" stroke-width="1.2" stroke-dasharray="4 3"/>
+
+        <!-- Pins -->
+        <g>
+          <circle cx="135" cy="95" r="4" fill="#f5a623" stroke="#fff" stroke-width="0.8"/>
+          <text x="143" y="86" class="pin-label" text-anchor="start">CAPE THOMPSON</text>
+        </g>
+        <g>
+          <circle cx="65" cy="205" r="4" fill="#f5a623" stroke="#fff" stroke-width="0.8"/>
+          <text x="65" y="228" class="pin-label" text-anchor="middle">CAPE ESPENBERG</text>
+        </g>
+        <g>
+          <circle cx="93" cy="178" r="4" fill="#00c8ff" stroke="#fff" stroke-width="0.8"/>
+          <text x="102" y="175" class="pin-label" text-anchor="start">KOTZEBUE SOUND</text>
+        </g>
+        <g>
+          <circle cx="128" cy="207" r="4" fill="#00c8ff" stroke="#fff" stroke-width="0.8"/>
+          <text x="137" y="212" class="pin-label" text-anchor="start">SELAWIK</text>
+        </g>
+        <g>
+          <circle cx="300" cy="150" r="4" fill="#a78bfa" stroke="#fff" stroke-width="0.8"/>
+          <text x="309" y="148" class="pin-label" text-anchor="start">FAIRBANKS</text>
+        </g>
+        <g>
+          <circle cx="335" cy="335" r="4" fill="#a78bfa" stroke="#fff" stroke-width="0.8"/>
+          <text x="344" y="333" class="pin-label" text-anchor="start">ANCHORAGE</text>
+        </g>
+
+        <!-- Compass -->
+        <g transform="translate(548,42)">
+          <circle r="17" fill="#00c8ff" fill-opacity="0.08" stroke="#00c8ff" stroke-opacity="0.4" stroke-width="1"/>
+          <path d="M0,-11 L4,3 L0,-2 L-4,3 Z" fill="#f5a623"/>
+          <text y="26" text-anchor="middle" class="pin-sub">N</text>
+        </g>
+      </svg>
+    </div>
+    <p class="map-caption">Stylized reference map, not drawn to scale. Shaded region approximates the traditional Northwest Alaska homeland described by Burch (1998), bounded by the Chukchi Sea coastline between Cape Thompson and Cape Espenberg.</p>
+
+    <div class="map-key">
+      <div class="map-key-item">
+        <div class="map-key-place">Cape Thompson &amp; Cape Espenberg</div>
+        <div class="map-key-desc">Mark the historic north and south boundaries of the Iñupiaq homeland along the Chukchi Sea coast (Burch, 1998).</div>
+      </div>
+      <div class="map-key-item">
+        <div class="map-key-place">Kotzebue Sound</div>
+        <div class="map-key-desc">Traditional Iñupiaq waters at the heart of the Northwest Alaska region (Burch, 1998).</div>
+      </div>
+      <div class="map-key-item">
+        <div class="map-key-place">Selawik</div>
+        <div class="map-key-desc">Site of the 2001 survival story that inspired that year's Iñupiaq Days theme, "Arctic Survival" (Dayo, 2001).</div>
+      </div>
+      <div class="map-key-item">
+        <div class="map-key-place">Fairbanks</div>
+        <div class="map-key-desc">Home of the University of Alaska Press, publisher of Burch's (1998) ethnography of the Iñupiaq nations.</div>
+      </div>
+      <div class="map-key-item">
+        <div class="map-key-place">Anchorage</div>
+        <div class="map-key-desc">Headquarters of the Cook Inlet Tribal Council, founding partner behind Never Alone ("The Making of Never Alone," 2019).</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="sep"></div>
+
+  <!-- Modules -->
+  <div class="section-label">Five Learning Modules</div>
+  <section class="modules" id="modules" aria-label="Learning modules"></section>
+
+  <div class="sep"></div>
+
+  <!-- References -->
+  <section class="refs-section" id="references">
+    <div class="refs-title">References</div>
+    <div class="refs-sub">APA, 6th Edition</div>
+    <ol class="refs-list" id="refsList"></ol>
+  </section>
+
+  <p class="footer-note">Interactive concept for educational purposes. Iñupiaq Heritage Digital Learning Guide.</p>
+
+</main>
+
+<!-- GLOSSARY OVERLAY -->
+<div class="glos-overlay" id="glosOverlay" onclick="handleOverlayClick(event)">
+  <div class="glos-panel" onclick="event.stopPropagation()" role="dialog" aria-label="Glossary">
+    <div class="glos-head">
+      <span class="glos-title">Glossary</span>
+      <button class="glos-close" onclick="closeGlossary()" aria-label="Close glossary">✕</button>
+    </div>
+    <div id="glosTerms"></div>
+  </div>
+</div>
+
+<script>
+// DATA
+const MODULES = [
+  {
+    num:"01", icon:"01", color:"#f5a623",
+    title:"Intro to 'Never Alone'",
+    sub:"Kisima Inŋitchuŋa: I Am Not Alone",
+    tags:["Conceptual Click","Game Foundation"],
+    tabs:[
+      {
+        label:"About the Game",
+        heading:"Kisima Inŋitchuŋa",
+        body:"Released by Upper One Games in partnership with E-Line Media, <em>Never Alone</em> (Kisima Inŋitchuŋa) premiered on November 18, 2014. The project began in 2012, when the board of the Cook Inlet Tribal Council (CITC) formed the first Indigenous-owned video game company in the United States, intent on building a commercial title rooted entirely in Iñupiaq culture and storytelling ('The Making of Never Alone,' 2019). The collaboration paired experienced commercial game developers with Iñupiaq elders, writers, and community members at every stage of production ('The Making of Never Alone,' 2019).",
+        facts:[
+          {k:"Developer",v:"Upper One Games & E-Line Media"},
+          {k:"Released",v:"November 18, 2014"},
+          {k:"Founded By",v:"Cook Inlet Tribal Council, 2012"},
+          {k:"Genre",v:"Puzzle Platformer"},
+          {k:"Awards",v:"BAFTA, Game of the Year (Games for Change)"},
+          {k:"Reach",v:"Over 3.5 million downloads"}
+        ],
+        insight:"Never Alone began as a community investment decision rather than a creative pitch. CITC explored several mission-aligned ventures before concluding that a video game offered the best vehicle for celebrating Iñupiaq culture while building a self-sustaining revenue stream for the community ('The Making of Never Alone,' 2019)."
+      },
+      {
+        label:"Characters",
+        heading:"Nuna and the Arctic Fox",
+        body:"Players guide Nuna, a young Iñupiaq girl, alongside an Arctic fox companion as she searches for the source of an endless blizzard. The choice of a girl protagonist paired with a fox companion followed extended internal debate during development, weighed against an alternative pairing of a boy and a wolf ('The Making of Never Alone,' 2019). The finished game is built as a two-player cooperative experience, a design decision meant to reinforce the cultural theme of interdependence within the gameplay itself ('The Making of Never Alone,' 2019).",
+        facts:[
+          {k:"Hero",v:"Nuna, a young Iñupiaq girl"},
+          {k:"Companion",v:"Arctic fox"},
+          {k:"Mode",v:"Two-player cooperative"},
+          {k:"Design Theme",v:"Interdependence"},
+          {k:"Narration",v:"Performed entirely in Iñupiaq"},
+          {k:"Narrator",v:"The late James Nageak"}
+        ],
+        insight:"Choosing to make Never Alone playable only through cooperation, rather than solo heroics, was a deliberate design decision meant to echo the value Iñupiaq communities place on working together rather than acting alone ('The Making of Never Alone,' 2019)."
+      },
+      {
+        label:"Community",
+        heading:"Built With the Community",
+        body:"Production drew on the direct participation of Iñupiaq elders, writers, and storytellers, whose involvement shaped the narrative, art direction, and language used throughout the game ('The Making of Never Alone,' 2019). The finished title includes 26 unlockable mini-documentary interviews with Iñupiaq community members, letting players hear directly from the people whose traditions inspired each part of the story ('The Making of Never Alone,' 2019). Since release, the game has been distributed with a classroom guide to school districts across Alaska and has appeared in exhibitions at the Smithsonian, the Denver Art Museum, and the Heard Museum ('The Making of Never Alone,' 2019).",
+        facts:[
+          {k:"Cultural Insights",v:"26 unlockable documentary videos"},
+          {k:"Founding Partner",v:"Cook Inlet Tribal Council"},
+          {k:"Classroom Use",v:"Distributed to Alaska school districts"},
+          {k:"Exhibited At",v:"Smithsonian, Denver Art Museum, Heard Museum"},
+          {k:"Press",v:"Featured in over 1,000 publications"},
+          {k:"Legacy",v:"Sparked further Indigenous-led game development"}
+        ],
+        insight:"Never Alone was not made about the Iñupiat. According to its founding partner, it was made with them, from initial concept through the final cultural insight video ('The Making of Never Alone,' 2019)."
+      }
+    ]
+  },
+  {
+    num:"02", icon:"02", color:"#00c8ff",
+    title:"Iñupiaq Folklore & Spirits",
+    sub:"Story and Spirit in Never Alone",
+    tags:["Conceptual Click","Expand"],
+    tabs:[
+      {
+        label:"Kunuuksaayuuka",
+        heading:"The Blizzard Man",
+        body:"In Never Alone, Nuna must outwit Kunuuksaayuuka, a towering blizzard spirit whose presence is said to summon devastating storms. The game's developers describe the underlying story as one that has been carried within Iñupiaq communities for generations, brought to a new audience through direct collaboration with the people who still tell it ('The Making of Never Alone,' 2019). Stories of this kind were traditionally preserved through formal nightly storytelling sessions held in a qargi, a community house, through the long winter months, where the most accomplished narrators held real social standing within their community (Burch, 1998).",
+        facts:[
+          {k:"Type",v:"Supernatural giant figure"},
+          {k:"Power",v:"Said to summon blizzards"},
+          {k:"Tradition",v:"Preserved through oral storytelling"},
+          {k:"Setting",v:"Central conflict of Never Alone"},
+          {k:"Origin",v:"Story passed down across generations"}
+        ],
+        insight:"Never Alone delivers this story through an elder's recorded voice and unlockable interview clips, a format that echoes the nightly storytelling sessions once held in a qargi, simply carried into a digital medium ('The Making of Never Alone,' 2019; Burch, 1998)."
+      },
+      {
+        label:"Sky People",
+        heading:"Sky People Spirits",
+        body:"Sky People spirits appear throughout Never Alone as luminous figures who guide and protect Nuna on her journey. Their presence reflects a broader pattern documented across Alaska Native communities, in which connection to land, family, and the unseen world is described as central to personal and collective identity, often through first-person accounts shared directly by community members ('View of Living Our Cultures,' 2010).",
+        facts:[
+          {k:"Role",v:"Helpers and guides in Never Alone"},
+          {k:"Appearance",v:"Luminous, ethereal figures"},
+          {k:"Cultural Pattern",v:"Spiritual connection documented through first-person narrative"},
+          {k:"Theme",v:"Protection extending beyond the individual"}
+        ],
+        insight:"Across the communities documented in Living Our Cultures, spiritual connection to land is described not as private belief but as something carried forward through personal testimony, much as Sky People spirits voice unseen support throughout Nuna's journey ('View of Living Our Cultures,' 2010)."
+      },
+      {
+        label:"Spirits in Nature",
+        heading:"Spirits in All Things",
+        body:"Central to many Alaska Native worldviews, including Iñupiaq tradition, is the understanding that land, animals, and weather are not simply resources but are bound up with the people who depend on them. Living Our Cultures, the companion volume to a joint Smithsonian and Anchorage Museum exhibition, presents this relationship largely in the words of Native consultants themselves, through first-person essays on connection to land, family, and ceremony ('View of Living Our Cultures,' 2010). In Never Alone, the Arctic fox that accompanies Nuna throughout her journey gives this relationship a visible, playable form.",
+        facts:[
+          {k:"Format",v:"First-person essays by Native consultants"},
+          {k:"Themes",v:"Land, family, community, ceremony"},
+          {k:"Exhibition Partners",v:"Smithsonian Arctic Studies Center & Anchorage Museum"},
+          {k:"Game Form",v:"Arctic fox companion"}
+        ],
+        insight:"The relationship between people and the land they depend on, documented across Alaska Native testimony in Living Our Cultures, finds a playable echo in Nuna's bond with her fox companion, a relationship that helps rather than simply accompanies ('View of Living Our Cultures,' 2010)."
+      }
+    ]
+  },
+  {
+    num:"03", icon:"03", color:"#45b7d1",
+    title:"Traditions & Values",
+    sub:"How Knowledge and Values Pass Forward",
+    tags:["Conceptual Click","Expand"],
+    tabs:[
+      {
+        label:"Oral Storytelling",
+        heading:"Quliaqtuat: Living Stories",
+        body:"Long before any of these traditions appeared in a video game, Iñupiaq communities relied on spoken narrative to carry their history forward. The most structured form of this practice took place almost nightly through the fall and winter months, when residents of an entire settlement gathered inside a qargi, a dedicated community building, to hear elders recount the past at length (Burch, 1998). Individuals who could deliver these accounts skillfully and accurately held a respected position within the community, and a settlement was considered to be lacking something important if it had no one able to fill that role (Burch, 1998). Knowledge also traveled informally: as families moved across the land on foot, elders would narrate the events tied to each place they passed, weaving history directly into the geography itself (Burch, 1998).",
+        facts:[
+          {k:"Iñupiaq Term",v:"Quliaqtuat (oral stories)"},
+          {k:"Setting",v:"Qargi (community house)"},
+          {k:"Season",v:"Primarily fall and winter"},
+          {k:"Status",v:"Skilled storytellers held respected positions"},
+          {k:"Method",v:"Formal sessions and informal narration while traveling"}
+        ],
+        insight:"Burch (1998) observes that simply learning the place names of one's own territory was a way of absorbing a community's national history, since an estimated majority of traditional place names mark a specific event or person connected to that location."
+      },
+      {
+        label:"Respect for Elders",
+        heading:"Elders as Living Libraries",
+        body:"Elders have long held the position of primary knowledge-keepers within Iñupiaq communities, a role that became starkly clear during a period of crisis. As famine and disease swept through Northwest Alaska in the nineteenth century, elders were affected disproportionately, and because so much historical knowledge existed only in their memory, much of it disappeared along with them (Burch, 1998). That same responsibility continues today in a different form. In 2001, two Iñupiaq students from Selawik survived seven days lost in a winter storm by drawing on safety skills they had learned from community elders, including how to navigate, dress for extreme cold, and build emergency shelter (Dayo, 2001). Their experience went on to shape that year's Iñupiaq Days program, built around the theme 'Arctic Survival' (Dayo, 2001).",
+        facts:[
+          {k:"Historical Role",v:"Elders as primary knowledge-keepers (Burch, 1998)"},
+          {k:"Modern Example",v:"Selawik survival story (Dayo, 2001)"},
+          {k:"Skills Taught",v:"Orienteering, cold-weather safety, snow shelters"},
+          {k:"Event",v:"Iñupiaq Days, theme of Arctic Survival"},
+          {k:"Risk",v:"Knowledge nearly lost during 19th-century famine and disease"}
+        ],
+        insight:"The Selawik story shows what is lost, and what can be saved, when knowledge passes from elder to youth: skills taught in community settings became, for two young women, the difference between returning home and not (Dayo, 2001)."
+      },
+      {
+        label:"Iñupiaqatigiit",
+        heading:"Iñupiaqatigiit: The Iñupiaq Way",
+        body:"Traditional Iñupiaq nations were not organized around centralized authority but around a network of kin-based units that anthropologists describe as a segmental society (Burch, 2005). Each of these units, called local families, was built around a core of adult siblings, their spouses, and children, and typically included between six and forty people (Burch, 2005). Individual local families were tied to one another largely through the same kinship bonds that connected people within a single settlement, though those bonds grew weaker across greater distances and were reinforced at a broader level by namesake relationships and friendship (Burch, 2005). What ultimately held an entire nation together was less a formal political structure than a shared sense of pride, identity, and joint responsibility for a particular territory (Burch, 2005).",
+        facts:[
+          {k:"Structure",v:"Segmental society of local families (Burch, 2005)"},
+          {k:"Family Size",v:"Roughly 6 to 40 members"},
+          {k:"Bonds",v:"Kinship, namesake relationships, friendship"},
+          {k:"Cohesion",v:"Shared territory and national pride"},
+          {k:"Game Parallel",v:"Cooperative mechanic in Never Alone"}
+        ],
+        insight:"Burch (2005) describes the local family as resembling an extended household more closely than a political faction or hunting party, a structure that placed kinship, not hierarchy, at the center of Iñupiaq social life."
+      }
+    ]
+  },
+  {
+    num:"04", icon:"04", color:"#00e887",
+    title:"Survival Techniques",
+    sub:"Knowledge Tested by the Arctic",
+    tags:["Conceptual Click","Expand"],
+    tabs:[
+      {
+        label:"Environmental Knowledge",
+        heading:"Reading the Arctic",
+        body:"The Iñupiat featured in Never Alone are rooted in the geography of Northwest Alaska, a region defined by the Chukchi Sea coastline running from Cape Thompson south to Cape Espenberg, together with the river systems draining into it and the waters of Kotzebue Sound (Burch, 1998). This territory closely matches the present-day boundaries of the NANA Region, established under the Alaska Native Claims Settlement Act of 1971 (Burch, 1998). Living successfully within this landscape has always depended on close, practical environmental knowledge, the kind still passed down today through community events such as Iñupiaq Days, where elders guide students through orienteering, cold-weather safety, and reading changing winter conditions (Dayo, 2001).",
+        facts:[
+          {k:"Boundary",v:"Cape Thompson to Cape Espenberg coastline"},
+          {k:"Includes",v:"Kotzebue Sound, inland river drainages"},
+          {k:"Modern Equivalent",v:"NANA Region under ANCSA, 1971"},
+          {k:"Skills Taught Today",v:"Orienteering, cold-weather safety"},
+          {k:"Format",v:"Community-wide Iñupiaq Days events"}
+        ],
+        insight:"Burch (1998) notes that this territory was, a century and a half ago, even more restricted, with the Colville River delta marking its eastern edge and Golovnin Bay its southern point, a reminder that the boundaries of a homeland can shift across generations."
+      },
+      {
+        label:"Traditional Tools",
+        heading:"Tools of the Arctic",
+        body:"Traditional Iñupiaq tools and implements, refined across generations of Arctic life, are echoed throughout Never Alone's gameplay and are also preserved in major museum collections. Since the late 1990s, the Smithsonian's Arctic Studies Center has partnered with the Anchorage Museum to bring more than 600 such objects back to Alaska for long-term display, working directly with Alaska Native cultural specialists to document each item's history and use ('View of Living Our Cultures,' 2010). Many of these pieces had been removed from their home communities decades, or even a century, earlier ('View of Living Our Cultures,' 2010).",
+        facts:[
+          {k:"Objects on Display",v:"Over 600 items"},
+          {k:"Partner Institutions",v:"Smithsonian NMNH & Anchorage Museum"},
+          {k:"Collaboration Began",v:"Late 1990s"},
+          {k:"Format",v:"One object per page, paired with image and commentary"},
+          {k:"Loan Period",v:"In Anchorage through at least 2017"}
+        ],
+        insight:"Each object in the Living Our Cultures collection is presented beside a historical photograph and a personal comment from a Native consultant, a format that lets the tools speak through the voices of the people who actually used them ('View of Living Our Cultures,' 2010)."
+      },
+      {
+        label:"Cooperation",
+        heading:"Survival Through Community",
+        body:"Cooperation in the Arctic is rarely abstract. In 2001, two young Iñupiaq women from Selawik became lost for seven days after their snowmachine ran out of fuel during a winter storm, and survived largely because of the bond they maintained with one another and the skills they had learned from community elders (Dayo, 2001). Their experience inspired that year's Iñupiaq Days theme of Arctic Survival, bringing elders and students from across the NANA Region together for a week of shared instruction and a community feast held in their honor (Dayo, 2001).",
+        facts:[
+          {k:"Case Study",v:"Two Selawik students, lost seven days (Dayo, 2001)"},
+          {k:"Region",v:"NANA Region, Northwest Arctic"},
+          {k:"Outcome",v:"Both survived, located by Search and Rescue"},
+          {k:"Legacy",v:"Inspired Arctic Survival theme of Iñupiaq Days"},
+          {k:"Response",v:"Week-long event with elders and a community feast"}
+        ],
+        insight:"The two Selawik students were said to have found not only the will to survive individually, but a bond of friendship through their ordeal, the same cooperative spirit that Never Alone later built its entire game mechanic around (Dayo, 2001; 'The Making of Never Alone,' 2019)."
+      }
+    ]
+  },
+  {
+    num:"05", icon:"05", color:"#a78bfa",
+    title:"Culture & Art",
+    sub:"Artistic and Linguistic Identity",
+    tags:["Conceptual Click"],
+    tabs:[
+      {
+        label:"Iñupiaq Language",
+        heading:"The Living Language",
+        body:"According to a 2007 estimate from the Alaska Native Language Center, fewer than 2,150 people could still speak Iñupiaq fluently, a figure that helps explain why Never Alone's developers built the entire game around Iñupiaq-language narration ('The Making of Never Alone,' 2019). The finished game is narrated entirely in Iñupiaq by the late James Nageak, with subtitles available in 16 languages, allowing the language to reach a global audience of millions of players ('The Making of Never Alone,' 2019).",
+        facts:[
+          {k:"Estimated Speakers",v:"Fewer than 2,150 (2007 estimate)"},
+          {k:"Narrator",v:"The late James Nageak"},
+          {k:"Subtitles",v:"Available in 16 languages"},
+          {k:"Downloads",v:"Over 3.5 million"},
+          {k:"Purpose",v:"Designed to spark curiosity, not replace instruction"}
+        ],
+        insight:"CITC has been clear that a video game alone cannot replace formal language education, but designed Never Alone specifically to spark curiosity. Through the game, a language spoken fluently by fewer than 2,150 people has been heard by audiences across the world ('The Making of Never Alone,' 2019)."
+      },
+      {
+        label:"Art & Carvings",
+        heading:"Art Motifs and Carvings",
+        body:"Alaska Native material culture, including carved ivory and bone, beaded clothing, and woven baskets, has long been documented and collected by outside institutions. Since the late 1990s, the Smithsonian's Arctic Studies Center has worked directly with Alaska Native cultural specialists to study and reinterpret objects removed from their communities decades or even centuries earlier ('View of Living Our Cultures,' 2010). The resulting exhibition and companion volume, Living Our Cultures, presents more than 600 such objects, each paired with a historical photograph and a personal comment from a Native consultant ('View of Living Our Cultures,' 2010).",
+        facts:[
+          {k:"Objects Featured",v:"Over 600 items"},
+          {k:"Institutions",v:"Smithsonian NMNH, National Museum of the American Indian"},
+          {k:"Local Partner",v:"Anchorage Museum at the Rasmuson Center"},
+          {k:"Format",v:"One object per page with image and quote"},
+          {k:"On Loan To Anchorage",v:"Through at least 2017"}
+        ],
+        insight:"A historian of Native art who reviewed the collection noted that pairing each object with a personal quote from a Native consultant means a reader keeps learning more each time they return to the illustrations ('View of Living Our Cultures,' 2010)."
+      },
+      {
+        label:"Connection to Land",
+        heading:"The Land as Living Relative",
+        body:"Across Alaska Native cultures, including the Iñupiat, connection to land has traditionally been expressed not only through subsistence practice but through first-person narrative, with elders and cultural specialists describing their relationship to specific places, family, and community as central to identity ('View of Living Our Cultures,' 2010). This relationship is also written directly into the landscape itself: in Northwest Alaska, an estimated majority of traditional place names are thought to commemorate a specific event or person connected to that location, meaning the land itself functions as a form of historical record (Burch, 1998).",
+        facts:[
+          {k:"Place Names",v:"Majority commemorate an event or person (Burch, 1998)"},
+          {k:"Documentation",v:"First-person narratives central to Living Our Cultures"},
+          {k:"Region Definition",v:"Coastline and rivers of Northwest Alaska (Burch, 1998)"},
+          {k:"Format",v:"Personal essays by Native consultants"}
+        ],
+        insight:"Learning the place names of a homeland was, in itself, a way of acquiring its history, a reminder that for the Iñupiat, identity and land have never been fully separable (Burch, 1998)."
+      }
+    ]
+  }
+];
+
+const GLOSSARY = [
+  {word:"KISIMA INGITCHUNA",def:"Iñupiaq phrase meaning 'I am Not Alone,' the full title of the Never Alone video game ('The Making of Never Alone,' 2019)."},
+  {word:"IÑUPIAQ",def:"The Indigenous people of northern and northwestern Alaska, and their language."},
+  {word:"NUNA",def:"Iñupiaq word for 'land,' also the name of the protagonist in Never Alone."},
+  {word:"QARGI",def:"A communal gathering house in traditional Iñupiaq villages, used for storytelling, ceremonies, and decision-making (Burch, 1998)."},
+  {word:"NUNAMIUT",def:"The 'inland people,' one half of a traditional binary model used to describe early Iñupiaq social geography, distinguished from the coastal Tagiugmiut (Burch, 1998)."},
+  {word:"TAGIUGMIUT",def:"The 'coastal people,' the seaward counterpart to the Nunamiut in traditional Iñupiaq social geography (Burch, 1998)."},
+  {word:"LOCAL FAMILY",def:"A kin-based social unit of roughly six to forty members that formed the basic building block of traditional Iñupiaq society (Burch, 2005)."},
+  {word:"IÑUPIAQATIGIIT",def:"The Iñupiaq way of life, a collective set of values emphasizing cooperation, respect, and community interdependence (Burch, 2005)."},
+  {word:"QULIAQTUAT",def:"Traditional Iñupiaq oral stories used to pass down knowledge, ethics, and history between generations (Burch, 1998)."},
+  {word:"KUNUUKSAAYUUKA",def:"A giant blizzard spirit from Iñupiaq oral tradition who serves as the central antagonist in Never Alone ('The Making of Never Alone,' 2019)."},
+  {word:"NANA REGION",def:"Northwest Alaska Native Association Region, established under the 1971 Alaska Native Claims Settlement Act, closely matching the traditional Iñupiaq homeland described by Burch (1998)."},
+  {word:"BOLA",def:"A traditional hunting tool of weighted, joined cords used to catch birds in flight, also a key gameplay mechanic in Never Alone."},
+  {word:"CULTURAL INSIGHTS",def:"Twenty-six unlockable mini-documentary interviews with Iñupiaq community members included in Never Alone ('The Making of Never Alone,' 2019)."},
+  {word:"COOK INLET TRIBAL COUNCIL (CITC)",def:"The Alaska Native nonprofit organization that founded and produced Never Alone, the first Indigenous-owned video game company in the United States ('The Making of Never Alone,' 2019)."}
+];
+
+const REFERENCES = [
+  "Burch, E. S., Jr. (2005). <em>Alliance and Conflict: The World System of the Inupiaq Eskimos.</em> Ernest S. Burch Jr.: 9781552381427 - AbeBooks. <a href=\"https://www.abebooks.com/9781552381427/Alliance-Conflict-World-System-Inupiaq-1552381420/plp\" target=\"_blank\" rel=\"noopener\">https://www.abebooks.com/9781552381427/Alliance-Conflict-World-System-Inupiaq-1552381420/plp</a>",
+  "Dayo, D. M. (2001). Sharing Our Pathways: A Newsletter of the Alaska Rural Systemic Initiative, 2001. <em>Sharing Our Pathways, 6,</em> n1-5.",
+  "The Iñupiaq Eskimo nations of northwest Alaska : Burch, Ernest S., 1938- : Free Download, Borrow, and Streaming : Internet Archive. (1998). Internet Archive. <a href=\"https://archive.org/details/inupiaqeskimonat0000burc\" target=\"_blank\" rel=\"noopener\">https://archive.org/details/inupiaqeskimonat0000burc</a>",
+  "The making of Never Alone (Kisima Inŋitchuŋa): Celebrating a people and a language. (2019, March 11). Cultural Survival. <a href=\"https://www.culturalsurvival.org/publications/cultural-survival-quarterly/making-never-alone-kisima-innitchuna-celebrating-people\" target=\"_blank\" rel=\"noopener\">https://www.culturalsurvival.org/publications/cultural-survival-quarterly/making-never-alone-kisima-innitchuna-celebrating-people</a>",
+  "View of Living Our Cultures: Sharing Our Heritage: The First Peoples of Alaska (Crowell, Worl, Ongtooguk, and Biddison, eds.). (2010). <a href=\"https://scholarworks.iu.edu/journals/index.php/mar/article/view/1224/1281\" target=\"_blank\" rel=\"noopener\">https://scholarworks.iu.edu/journals/index.php/mar/article/view/1224/1281</a>"
+];
+
+// STATE
+let openModule = -1;
+const visited = new Set();
+
+// RENDER
+function renderModules() {
+  const container = document.getElementById('modules');
+  container.innerHTML = MODULES.map((m, i) => `
+    <article class="module-card" id="mc${i}" style="--m-color:${m.color}"
+             onclick="toggleModule(${i})" role="button" tabindex="0"
+             aria-expanded="false" aria-label="Module ${m.num}: ${m.title}">
+      <div class="module-header">
+        <div class="module-num" aria-hidden="true">${m.num}</div>
+        <div class="module-meta">
+          <div class="module-title">${m.title}</div>
+          <div class="module-sub">${m.sub}</div>
+          <div class="module-tags">${m.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+        </div>
+        <div class="module-chevron" aria-hidden="true">▼</div>
+      </div>
+      <div class="module-body" id="mb${i}" aria-hidden="true">
+        <div class="module-inner">
+          <div class="tabs" role="tablist">
+            ${m.tabs.map((t,j)=>`
+              <button class="tab-btn${j===0?' active':''}" role="tab"
+                      aria-selected="${j===0}"
+                      onclick="switchTab(event,${i},${j})">${t.label}</button>
+            `).join('')}
+          </div>
+          ${m.tabs.map((t,j)=>`
+            <div class="tab-pane${j===0?' active':''}" id="tp${i}_${j}" role="tabpanel">
+              <h2 class="tab-heading">${t.heading}</h2>
+              <p class="tab-body">${t.body}</p>
+              <div class="fact-grid">
+                ${t.facts.map(f=>`
+                  <div class="fact-box">
+                    <div class="fact-key">${f.k}</div>
+                    <div class="fact-val">${f.v}</div>
+                  </div>
+                `).join('')}
+              </div>
+              <div class="insight-box">
+                <div class="insight-label">Key Insight</div>
+                <p class="insight-text">${t.insight}</p>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    </article>
+  `).join('');
+
+  Array.from(document.querySelectorAll('.module-card')).forEach(card => {
+    card.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); card.click(); }
+    });
+  });
+}
+
+function renderGlossary() {
+  document.getElementById('glosTerms').innerHTML = GLOSSARY.map(g => `
+    <div class="glos-item">
+      <div class="glos-word">${g.word}</div>
+      <div class="glos-def">${g.def}</div>
+    </div>
+  `).join('');
+}
+
+function renderReferences() {
+  document.getElementById('refsList').innerHTML = REFERENCES.map(r => `<li>${r}</li>`).join('');
+}
+
+// INTERACTIONS
+function toggleModule(i) {
+  const card = document.getElementById(`mc${i}`);
+  const body = document.getElementById(`mb${i}`);
+  const isOpen = card.classList.contains('open');
+
+  MODULES.forEach((_, idx) => {
+    const c = document.getElementById(`mc${idx}`);
+    const b = document.getElementById(`mb${idx}`);
+    c.classList.remove('open');
+    c.setAttribute('aria-expanded', 'false');
+    b.setAttribute('aria-hidden', 'true');
+  });
+
+  if (!isOpen) {
+    card.classList.add('open');
+    card.setAttribute('aria-expanded', 'true');
+    body.setAttribute('aria-hidden', 'false');
+    openModule = i;
+    visited.add(i);
+    updateProgress();
+    setTimeout(() => card.scrollIntoView({behavior:'smooth', block:'nearest'}), 80);
+  } else {
+    openModule = -1;
+    updateProgress();
+  }
+}
+
+function switchTab(e, mi, ti) {
+  e.stopPropagation();
+  const card = document.getElementById(`mc${mi}`);
+  Array.from(card.querySelectorAll('.tab-btn')).forEach((b, j) => {
+    b.classList.toggle('active', j === ti);
+    b.setAttribute('aria-selected', j === ti);
+  });
+  Array.from(card.querySelectorAll('.tab-pane')).forEach((p, j) => {
+    p.classList.toggle('active', j === ti);
+  });
+}
+
+function updateProgress() {
+  Array.from(document.querySelectorAll('.prog-dot')).forEach((d, i) => {
+    d.classList.remove('visited', 'current');
+    if (visited.has(i)) d.classList.add('visited');
+    if (i === openModule) { d.classList.remove('visited'); d.classList.add('current'); }
+  });
+}
+
+function goToModule(i) {
+  const card = document.getElementById(`mc${i}`);
+  if (!card) return;
+  if (!card.classList.contains('open')) toggleModule(i);
+  setTimeout(() => card.scrollIntoView({behavior:'smooth', block:'start'}), 100);
+}
+
+function openGlossary()  { document.getElementById('glosOverlay').classList.add('open'); }
+function closeGlossary() { document.getElementById('glosOverlay').classList.remove('open'); }
+function handleOverlayClick(e) { if (e.target === document.getElementById('glosOverlay')) closeGlossary(); }
+function scrollToTop()     { window.scrollTo({top:0, behavior:'smooth'}); }
+function scrollToModules() { document.getElementById('modules').scrollIntoView({behavior:'smooth'}); }
+function scrollToMap()     { document.getElementById('geo').scrollIntoView({behavior:'smooth'}); }
+function scrollToRefs()    { document.getElementById('references').scrollIntoView({behavior:'smooth'}); }
+
+// STARFIELD
+function buildStars() {
+  const container = document.getElementById('stars');
+  const coords = [
+    [12,8],[27,22],[45,5],[63,18],[78,9],[88,30],[5,40],[33,35],[55,28],[70,42],
+    [90,15],[18,55],[42,60],[65,50],[80,65],[10,70],[30,75],[50,82],[72,70],[92,58],
+    [20,90],[40,88],[60,95],[75,85],[95,90],[8,25],[38,12],[58,40],[82,48],[15,48]
+  ];
+  container.innerHTML = coords.map(([x,y]) => {
+    const size = Math.random() * 1.5 + 0.5;
+    const dur  = (Math.random() * 4 + 3).toFixed(1);
+    const del  = (Math.random() * 6).toFixed(1);
+    const op   = (Math.random() * 0.4 + 0.2).toFixed(2);
+    return `<div class="star" style="left:${x}%;top:${y}%;width:${size}px;height:${size}px;--d:${dur}s;--delay:${del}s;--op:${op}"></div>`;
+  }).join('');
+}
+
+// INIT
+buildStars();
+renderModules();
+renderGlossary();
+renderReferences();
+</script>
+</body>
+</html>
