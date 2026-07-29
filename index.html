@@ -295,8 +295,8 @@ body{background:var(--bg);color:var(--text);font-family:'Spectral',Georgia,serif
   letter-spacing:.1em;padding:3px 10px;border-radius:10px;
   border:1px solid var(--gold);color:var(--gold);opacity:.6;white-space:nowrap;}
 
-.scene-video{display:block;width:100%;max-height:400px;background:#000;
-  border-bottom:1px solid var(--border);}
+.scene-video-wrap{width:100%;aspect-ratio:16/9;background:#000;border-bottom:1px solid var(--border);}
+.scene-video-wrap iframe{width:100%;height:100%;border:none;display:block;}
 
 .scene-body{padding:18px 20px 22px;display:flex;flex-direction:column;gap:14px;}
 
@@ -798,11 +798,12 @@ body{background:var(--bg);color:var(--text);font-family:'Spectral',Georgia,serif
         </div>
         <span class="scene-tag">Cooperation &amp; Spirituality</span>
       </div>
-      <video class="scene-video" controls preload="metadata"
-        aria-label="Scene 1: Nuna and the Arctic Fox">
-        <source src="Scene_1_-_Intro.mp4" type="video/mp4">
-        Your browser does not support HTML5 video.
-      </video>
+      <div class="scene-video-wrap">
+        <iframe src="https://www.youtube.com/embed/cwleSFdHTv4"
+          title="Scene 1: Nuna and the Arctic Fox"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen></iframe>
+      </div>
       <div class="scene-body">
         <div class="scene-block scene-desc-block">
           <div class="scene-block-label">Scene Description</div>
@@ -825,11 +826,12 @@ body{background:var(--bg);color:var(--text);font-family:'Spectral',Georgia,serif
         </div>
         <span class="scene-tag">Inua &amp; Societal Balance</span>
       </div>
-      <video class="scene-video" controls preload="metadata"
-        aria-label="Scene 2: The Manslayer and the Village">
-        <source src="Scene_2_-_Villain_Intro.mp4" type="video/mp4">
-        Your browser does not support HTML5 video.
-      </video>
+      <div class="scene-video-wrap">
+        <iframe src="https://www.youtube.com/embed/nGUuT3WwCd0"
+          title="Scene 2: The Manslayer and the Village"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen></iframe>
+      </div>
       <div class="scene-body">
         <div class="scene-block scene-desc-block">
           <div class="scene-block-label">Scene Description</div>
@@ -852,11 +854,12 @@ body{background:var(--bg);color:var(--text);font-family:'Spectral',Georgia,serif
         </div>
         <span class="scene-tag">Aurora &amp; Loss</span>
       </div>
-      <video class="scene-video" controls preload="metadata"
-        aria-label="Scene 3: The Burned Village">
-        <source src="Scene_3_-_Village.mp4" type="video/mp4">
-        Your browser does not support HTML5 video.
-      </video>
+      <div class="scene-video-wrap">
+        <iframe src="https://www.youtube.com/embed/in1tylCQNdY"
+          title="Scene 3: The Burned Village"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen></iframe>
+      </div>
       <div class="scene-body">
         <div class="scene-block scene-desc-block">
           <div class="scene-block-label">Scene Description</div>
