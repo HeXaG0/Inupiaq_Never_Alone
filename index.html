@@ -22,7 +22,7 @@
 }
 html{scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--text);font-family:'Spectral',Georgia,serif;line-height:1.75;min-height:100vh;overflow-x:hidden;}
- 
+
 /* Aurora Background */
 .aurora{position:fixed;inset:0;z-index:0;pointer-events:none;}
 .aurora::before{
@@ -38,15 +38,15 @@ body{background:var(--bg);color:var(--text);font-family:'Spectral',Georgia,serif
   33%{transform:translate(-3%,2%) scale(1.05);}
   66%{transform:translate(2%,-1%) scale(0.97);}
 }
- 
+
 /* Starfield */
 .stars{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
 .star{position:absolute;background:#fff;border-radius:50%;opacity:0;animation:twinkle var(--d,4s) var(--delay,0s) ease-in-out infinite;}
 @keyframes twinkle{0%,100%{opacity:0;}50%{opacity:var(--op,0.5);}}
- 
+
 /* Layout */
 .wrap{position:relative;z-index:1;max-width:980px;margin:0 auto;padding:0 22px 90px;}
- 
+
 /* Header */
 .site-header{
   position:sticky;top:0;z-index:200;
@@ -83,7 +83,7 @@ body{background:var(--bg);color:var(--text);font-family:'Spectral',Georgia,serif
 .prog-dot:hover::after{opacity:1;}
 .prog-dot.visited{background:var(--cyan);box-shadow:0 0 8px rgba(0,200,255,.6);}
 .prog-dot.current{background:var(--gold);box-shadow:0 0 10px rgba(245,166,35,.7);}
- 
+
 /* Hero */
 .hero{text-align:center;padding:58px 0 36px;}
 .hero-eyebrow{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:.28em;color:var(--text-dim);text-transform:uppercase;margin-bottom:18px;}
@@ -97,10 +97,10 @@ body{background:var(--bg);color:var(--text);font-family:'Spectral',Georgia,serif
   transition:var(--ease);border-radius:4px;
 }
 .hero-cta:hover{background:rgba(0,200,255,.25);box-shadow:0 0 20px rgba(0,200,255,.2);}
- 
+
 /* Separator */
 .sep{height:1px;background:linear-gradient(90deg,transparent,rgba(0,200,255,.35),transparent);margin:38px 0;}
- 
+
 /* Section Label */
 .section-label{
   font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:.25em;
@@ -108,7 +108,7 @@ body{background:var(--bg);color:var(--text);font-family:'Spectral',Georgia,serif
   display:flex;align-items:center;gap:10px;
 }
 .section-label::after{content:'';flex:1;height:1px;background:var(--border);}
- 
+
 /* Geographic / Map Section */
 .geo-intro{font-size:13.5px;color:var(--text-dim);font-style:italic;max-width:640px;margin-bottom:18px;}
 .map-card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:22px;position:relative;overflow:hidden;}
@@ -124,10 +124,10 @@ body{background:var(--bg);color:var(--text);font-family:'Spectral',Georgia,serif
 }
 .map-key-place{font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--cyan);letter-spacing:.1em;text-transform:uppercase;margin-bottom:3px;}
 .map-key-desc{font-size:12px;color:var(--text);line-height:1.6;}
- 
+
 /* Module Cards */
 .modules{display:flex;flex-direction:column;gap:13px;margin-top:8px;}
- 
+
 .module-card{
   border-radius:7px;background:var(--card);
   border:1px solid var(--border);border-left:3px solid var(--border);
@@ -144,7 +144,7 @@ body{background:var(--bg);color:var(--text);font-family:'Spectral',Georgia,serif
   border-left-color:var(--m-color,var(--cyan));
   box-shadow:0 0 30px rgba(0,200,255,.12);
 }
- 
+
 .module-header{display:flex;align-items:center;gap:14px;padding:16px 18px;user-select:none;}
 .module-num{
   font-family:'Cinzel',serif;font-size:30px;font-weight:700;
@@ -159,12 +159,12 @@ body{background:var(--bg);color:var(--text);font-family:'Spectral',Georgia,serif
 .tag{font-family:'Share Tech Mono',monospace;font-size:8px;letter-spacing:.1em;padding:2px 8px;border-radius:10px;border:1px solid var(--m-color,var(--cyan));color:var(--m-color,var(--cyan));opacity:.65;}
 .module-chevron{font-size:13px;color:var(--text-dim);transition:transform var(--ease),color var(--ease);min-width:20px;text-align:center;}
 .module-card.open .module-chevron{transform:rotate(180deg);color:var(--m-color,var(--cyan));}
- 
+
 /* Module Body (collapsible) */
 .module-body{max-height:0;overflow:hidden;transition:max-height .55s ease;}
 .module-card.open .module-body{max-height:1300px;}
 .module-inner{border-top:1px solid var(--border);}
- 
+
 /* Tabs */
 .tabs{display:flex;background:rgba(0,0,0,.25);border-bottom:1px solid var(--border);}
 .tab-btn{
@@ -175,15 +175,15 @@ body{background:var(--bg);color:var(--text);font-family:'Spectral',Georgia,serif
 }
 .tab-btn:hover{color:var(--text-bright);}
 .tab-btn.active{color:var(--m-color,var(--cyan));border-bottom-color:var(--m-color,var(--cyan));}
- 
+
 /* Tab Pane */
 .tab-pane{display:none;padding:22px 22px 26px;animation:paneIn .3s ease;}
 .tab-pane.active{display:block;}
 @keyframes paneIn{from{opacity:0;transform:translateY(7px);}to{opacity:1;transform:translateY(0);}}
- 
+
 .tab-heading{font-family:'Cinzel',serif;font-size:19px;font-weight:600;color:var(--text-bright);margin-bottom:11px;}
 .tab-body{font-size:14.5px;line-height:1.8;color:var(--text);margin-bottom:18px;}
- 
+
 .fact-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:9px;margin-bottom:18px;}
 .fact-box{
   background:rgba(0,200,255,.04);border:1px solid var(--border);
@@ -191,7 +191,7 @@ body{background:var(--bg);color:var(--text);font-family:'Spectral',Georgia,serif
 }
 .fact-key{font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--m-color,var(--cyan));letter-spacing:.12em;text-transform:uppercase;margin-bottom:3px;}
 .fact-val{font-size:13px;color:var(--text-bright);}
- 
+
 .insight-box{
   padding:14px 18px;
   background:linear-gradient(135deg,rgba(0,200,255,.07),rgba(0,200,255,.02));
@@ -200,7 +200,7 @@ body{background:var(--bg);color:var(--text);font-family:'Spectral',Georgia,serif
 }
 .insight-label{font-family:'Share Tech Mono',monospace;font-size:8px;letter-spacing:.22em;color:var(--m-color,var(--cyan));text-transform:uppercase;margin-bottom:7px;}
 .insight-text{font-size:13.5px;font-style:italic;color:var(--text-bright);line-height:1.72;}
- 
+
 /* Glossary */
 .glos-overlay{
   position:fixed;inset:0;background:rgba(0,0,0,.52);z-index:300;
@@ -225,7 +225,7 @@ body{background:var(--bg);color:var(--text);font-family:'Spectral',Georgia,serif
 .glos-item:last-child{border-bottom:none;}
 .glos-word{font-family:'Cinzel',serif;font-size:12px;font-weight:700;color:var(--cyan);letter-spacing:.15em;text-transform:uppercase;margin-bottom:5px;}
 .glos-def{font-size:12.5px;color:var(--text);line-height:1.72;}
- 
+
 /* References */
 .refs-section{margin-top:55px;padding:26px 28px;background:var(--card);border:1px solid var(--border);border-radius:7px;}
 .refs-title{font-family:'Cinzel',serif;font-size:13px;font-weight:700;color:var(--cyan);letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px;}
@@ -235,10 +235,10 @@ body{background:var(--bg);color:var(--text);font-family:'Spectral',Georgia,serif
 .refs-list a{color:var(--cyan);text-decoration:none;word-break:break-all;}
 .refs-list a:hover{text-decoration:underline;}
 .refs-list em{color:var(--text-bright);font-style:italic;}
- 
+
 /* Footer */
 .footer-note{text-align:center;padding:30px 0;font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--text-dim);letter-spacing:.1em;}
- 
+
 /* Responsive */
 @media(max-width:580px){
   .header-top{flex-direction:column;align-items:flex-start;}
@@ -248,7 +248,7 @@ body{background:var(--bg);color:var(--text);font-family:'Spectral',Georgia,serif
   .module-num{font-size:22px;min-width:34px;}
   .map-key{grid-template-columns:1fr;}
 }
- 
+
 /* ── Map Zoom/Pan ── */
 .map-zoom-wrap{position:relative;width:100%;overflow:hidden;border-radius:5px;background:#050e22;}
 .map-zoom-controls{
@@ -272,14 +272,59 @@ body{background:var(--bg);color:var(--text);font-family:'Spectral',Georgia,serif
 }
 .alaska-map{display:block;width:100%;height:auto;cursor:grab;user-select:none;touch-action:none;}
 .alaska-map.dragging{cursor:grabbing;}
- 
+
+
+/* ── Analysis Section ─────────────────────────────────────────── */
+.analysis-intro{font-size:14px;color:var(--text-dim);font-style:italic;
+  max-width:700px;margin-bottom:24px;line-height:1.82;}
+
+.scene-card{background:var(--card);border:1px solid var(--border);
+  border-radius:8px;overflow:hidden;margin-bottom:18px;}
+
+.scene-header{display:flex;align-items:center;gap:14px;padding:15px 20px;
+  border-bottom:1px solid var(--border);background:rgba(0,0,0,.22);}
+.scene-num{font-family:'Cinzel',serif;font-size:28px;font-weight:700;
+  color:var(--gold);opacity:.82;min-width:40px;line-height:1;
+  text-shadow:0 0 14px rgba(245,166,35,.4);}
+.scene-meta{flex:1;}
+.scene-title{font-family:'Cinzel',serif;font-size:clamp(12px,2vw,15px);
+  font-weight:600;color:var(--text-bright);letter-spacing:.04em;
+  text-transform:uppercase;margin-bottom:3px;}
+.scene-cite{font-size:11px;color:var(--text-dim);font-style:italic;}
+.scene-tag{font-family:'Share Tech Mono',monospace;font-size:8px;
+  letter-spacing:.1em;padding:3px 10px;border-radius:10px;
+  border:1px solid var(--gold);color:var(--gold);opacity:.6;white-space:nowrap;}
+
+.scene-video{display:block;width:100%;max-height:400px;background:#000;
+  border-bottom:1px solid var(--border);}
+
+.scene-body{padding:18px 20px 22px;display:flex;flex-direction:column;gap:14px;}
+
+.scene-block{padding:14px 18px;border-radius:5px;}
+.scene-block-label{font-family:'Share Tech Mono',monospace;font-size:8.5px;
+  letter-spacing:.22em;text-transform:uppercase;margin-bottom:8px;}
+.scene-block-text{font-size:14.5px;line-height:1.82;color:var(--text);}
+
+.scene-desc-block{background:rgba(0,0,0,.2);border-left:3px solid var(--gold);}
+.scene-desc-block .scene-block-label{color:var(--gold);opacity:.75;}
+.scene-desc-block .scene-block-text{font-style:italic;color:var(--text-dim);}
+
+.scene-analysis-block{background:rgba(0,200,255,.04);
+  border-left:4px solid var(--cyan);}
+.scene-analysis-block .scene-block-label{color:var(--cyan);opacity:.75;}
+
+@media(max-width:580px){
+  .scene-tag{display:none;}
+  .scene-num{font-size:22px;min-width:30px;}
+}
+
 </style>
 </head>
 <body>
- 
+
 <div class="aurora" aria-hidden="true"></div>
 <div class="stars" id="stars" aria-hidden="true"></div>
- 
+
 <!-- HEADER -->
 <header class="site-header">
   <div class="header-inner">
@@ -289,6 +334,7 @@ body{background:var(--bg);color:var(--text);font-family:'Spectral',Georgia,serif
         <button class="nav-btn active" onclick="scrollToTop()">HOME</button>
         <button class="nav-btn" onclick="scrollToModules()">MODULES</button>
         <button class="nav-btn" onclick="scrollToMap()">MAP</button>
+        <button class="nav-btn" onclick="scrollToAnalysis()">ANALYSIS</button>
         <button class="nav-btn" onclick="scrollToRefs()">SOURCES</button>
         <button class="nav-btn" onclick="openGlossary()">GLOSSARY</button>
       </nav>
@@ -305,10 +351,10 @@ body{background:var(--bg);color:var(--text);font-family:'Spectral',Georgia,serif
     </div>
   </div>
 </header>
- 
+
 <!-- MAIN -->
 <main class="wrap">
- 
+
   <!-- Hero -->
   <section class="hero" id="top">
     <p class="hero-eyebrow">An Interactive Educational Journey for Undergraduates</p>
@@ -316,16 +362,16 @@ body{background:var(--bg);color:var(--text);font-family:'Spectral',Georgia,serif
     <p class="hero-body">Explore how the 2014 game Kisima Inŋitchuŋa ("I am Not Alone") preserves and shares the living culture of the Iñupiaq people of Alaska. Click any module below to begin your journey.</p>
     <button class="hero-cta" onclick="scrollToModules()">Begin Exploring</button>
   </section>
- 
+
   <div class="sep"></div>
- 
+
   <!-- Geographic Context / Map -->
   <div class="section-label">Geographic Context</div>
   <p class="geo-intro">The Iñupiat are the Inuit-Eskimo-speaking inhabitants of northern and northwestern Alaska, residing across roughly three dozen villages and towns from the Bering Strait to the Mackenzie Delta region (Burch, 1998). The stylized map below highlights the traditional Northwest Alaska homeland and several places referenced throughout this guide.</p>
   <section class="map-card" id="geo">
         <div class="map-svg-wrap">
       <div class="map-zoom-wrap" id="mapWrap">
- 
+
         <!-- Zoom controls -->
         <div class="map-zoom-controls">
           <button class="mz-btn" id="mzIn"  title="Zoom in">+</button>
@@ -333,11 +379,11 @@ body{background:var(--bg);color:var(--text);font-family:'Spectral',Georgia,serif
           <button class="mz-btn" id="mzOut" title="Zoom out">&#8722;</button>
           <button class="mz-btn" id="mzRst" title="Reset" style="font-size:13px;">&#8635;</button>
         </div>
- 
+
         <svg id="mainMap" viewBox="0 0 700 520" class="alaska-map"
           role="img"
           aria-label="Zoomable map of Northwest Alaska based on Burch (1998, 2005). Scroll or pinch to zoom, drag to pan.">
- 
+
           <defs>
             <linearGradient id="landFill" x1="20%" y1="0%" x2="80%" y2="100%">
               <stop offset="0%" stop-color="#1a3f62"/>
@@ -348,13 +394,13 @@ body{background:var(--bg);color:var(--text);font-family:'Spectral',Georgia,serif
               <feMerge><feMergeNode in="bg"/><feMergeNode in="SourceGraphic"/></feMerge>
             </filter>
           </defs>
- 
+
           <!-- Everything inside this group gets zoom/pan transform -->
           <g id="mapContent">
- 
+
           <!-- Ocean fill -->
           <rect x="0" y="0" width="700" height="520" fill="#050e22"/>
- 
+
           <!-- ── ALASKA LAND MASS (fill-rule evenodd = Kotzebue Sound is a hole) ── -->
           <path fill-rule="evenodd"
             fill="url(#landFill)" stroke="#40a8d8" stroke-width="2.0" stroke-opacity="1.0"
@@ -370,16 +416,16 @@ body{background:var(--bg);color:var(--text);font-family:'Spectral',Georgia,serif
               Z
               M 295,221 292,233 308,251 346,267 312,277 283,285 252,286 Z
             "/>
- 
+
           <!-- Hotham Inlet (water east of Kotzebue) -->
           <polygon
             points="346,267 360,269 400,272 440,276 462,281 462,291 436,289 400,283 360,278 346,275"
             fill="#050e22" stroke="#2a6890" stroke-width="0.7" stroke-opacity="0.7"/>
- 
+
           <!-- Selawik Lake -->
           <ellipse cx="469" cy="284" rx="17" ry="7"
             fill="#050e22" stroke="#2a6890" stroke-width="0.7" stroke-opacity="0.6"/>
- 
+
           <!-- ── INUPIAQ HOMELAND HIGHLIGHT ── -->
           <path
             fill="#00c8ff" fill-opacity="0.10"
@@ -392,11 +438,11 @@ body{background:var(--bg);color:var(--text);font-family:'Spectral',Georgia,serif
                L 312,277 283,285 252,286
                L 252,271 270,259 292,233 295,221
                L 270,211 222,206 Z"/>
- 
+
           <!-- ── ARCTIC CIRCLE (66.5 N -> y=293) ── -->
           <line x1="0" y1="293" x2="700" y2="293"
             stroke="#f5a623" stroke-width="1.0" stroke-dasharray="7,4" stroke-opacity="0.50"/>
- 
+
           <!-- ── RIVERS ── -->
           <!-- Colville R. (flows N to Beaufort Sea) -->
           <path d="M 660,150 Q 664,102 674,56 Q 680,30 688,8"
@@ -423,7 +469,7 @@ body{background:var(--bg);color:var(--text);font-family:'Spectral',Georgia,serif
           <!-- Selawik R. -->
           <path d="M 469,284 Q 445,283 420,281 Q 396,278 380,276"
             fill="none" stroke="#5abcde" stroke-width="0.9" stroke-opacity="0.55"/>
- 
+
           <!-- ── MOUNTAIN RANGES ── -->
           <!-- De Long Mountains -->
           <text x="318" y="97"
@@ -463,7 +509,7 @@ body{background:var(--bg);color:var(--text);font-family:'Spectral',Georgia,serif
             <polygon points="465,217 469,208 473,217"/>
             <polygon points="480,213 484,204 488,213"/>
           </g>
- 
+
           <!-- ── AREA / TERRAIN LABELS ── -->
           <!-- Arctic Coastal Plain (shifted right to avoid river labels) -->
           <text x="510" y="68"
@@ -479,7 +525,7 @@ body{background:var(--bg);color:var(--text);font-family:'Spectral',Georgia,serif
             font-family="'Share Tech Mono',monospace" font-size="9.5"
             fill="#5a9ab5" fill-opacity="0.65" text-anchor="middle" letter-spacing="0.07em"
             filter="url(#labelShadow)">PENINSULA</text>
- 
+
           <!-- ── WATER BODY LABELS ── -->
           <text x="50" y="142"
             font-family="'Share Tech Mono',monospace" font-size="11.5"
@@ -506,97 +552,97 @@ body{background:var(--bg);color:var(--text);font-family:'Spectral',Georgia,serif
           <text x="298" y="263"
             font-family="'Share Tech Mono',monospace" font-size="7.5"
             fill="#4db8e0" fill-opacity="0.72" text-anchor="middle" letter-spacing="0.08em">SOUND</text>
- 
+
           <!-- ── PLACE MARKERS ── -->
           <!-- Pt. Barrow (off top edge) -->
           <text x="694" y="11"
             font-family="'Share Tech Mono',monospace" font-size="7.5"
             fill="#b8d8f0" fill-opacity="0.40" text-anchor="end">PT. BARROW &#x2191;</text>
- 
+
           <!-- Wainwright -->
           <circle cx="467" cy="25" r="2.5" fill="#7cc4e0" fill-opacity="0.65" stroke="#fff" stroke-width="0.5"/>
           <text x="458" y="20"
             font-family="'Share Tech Mono',monospace" font-size="6.5"
             fill="#b8d8f0" fill-opacity="0.62" text-anchor="end"
             filter="url(#labelShadow)">WAINWRIGHT</text>
- 
+
           <!-- Icy Cape -->
           <circle cx="378" cy="44" r="2.5" fill="#7cc4e0" fill-opacity="0.65" stroke="#fff" stroke-width="0.5"/>
           <text x="368" y="39"
             font-family="'Share Tech Mono',monospace" font-size="6.5"
             fill="#b8d8f0" fill-opacity="0.62" text-anchor="end"
             filter="url(#labelShadow)">ICY CAPE</text>
- 
+
           <!-- Pt. Lay -->
           <circle cx="330" cy="82" r="2.5" fill="#7cc4e0" fill-opacity="0.62" stroke="#fff" stroke-width="0.5"/>
           <text x="338" y="78"
             font-family="'Share Tech Mono',monospace" font-size="6.5"
             fill="#b8d8f0" fill-opacity="0.60" text-anchor="start"
             filter="url(#labelShadow)">PT. LAY</text>
- 
+
           <!-- Cape Lisburne: label ABOVE the pin, well clear of Pt. Hope below -->
           <circle cx="180" cy="134" r="3.0" fill="#5ab8e0" fill-opacity="0.85" stroke="#fff" stroke-width="0.7"/>
           <text x="167" y="124"
             font-family="'Share Tech Mono',monospace" font-size="7.5"
             fill="#b8d8f0" fill-opacity="0.84" text-anchor="end"
             filter="url(#labelShadow)">C. LISBURNE</text>
- 
+
           <!-- Pt. Hope: label to the LEFT, vertically centred on pin -->
           <circle cx="152" cy="170" r="3.5" fill="#f5a623" fill-opacity="0.95" stroke="#fff" stroke-width="0.8"/>
           <text x="140" y="174"
             font-family="'Share Tech Mono',monospace" font-size="7.5"
             fill="#e8f4ff" fill-opacity="0.92" text-anchor="end"
             filter="url(#labelShadow)">PT. HOPE</text>
- 
+
           <!-- Cape Thompson: label BELOW-LEFT, separated from Pt. Hope above -->
           <circle cx="184" cy="184" r="4.0" fill="#f5a623" fill-opacity="0.95" stroke="#fff" stroke-width="0.9"/>
           <text x="172" y="200"
             font-family="'Share Tech Mono',monospace" font-size="7.5"
             fill="#e8f4ff" fill-opacity="0.92" text-anchor="end"
             filter="url(#labelShadow)">C. THOMPSON</text>
- 
+
           <!-- Kivalina: small label BELOW-RIGHT of pin, away from Krusenstern -->
           <circle cx="257" cy="215" r="2.5" fill="#7cc4e0" fill-opacity="0.68" stroke="#fff" stroke-width="0.5"/>
           <text x="264" y="227"
             font-family="'Share Tech Mono',monospace" font-size="6.5"
             fill="#b8d8f0" fill-opacity="0.62" text-anchor="start"
             filter="url(#labelShadow)">KIVALINA</text>
- 
+
           <!-- Cape Krusenstern: ABOVE-RIGHT of pin -->
           <circle cx="295" cy="221" r="3.0" fill="#5ab8e0" fill-opacity="0.85" stroke="#fff" stroke-width="0.7"/>
           <text x="303" y="214"
             font-family="'Share Tech Mono',monospace" font-size="7.5"
             fill="#b8d8f0" fill-opacity="0.82" text-anchor="start"
             filter="url(#labelShadow)">C. KRUSENSTERN</text>
- 
+
           <!-- Kotzebue (city): ABOVE-RIGHT -->
           <circle cx="346" cy="267" r="5.5" fill="#00c8ff" fill-opacity="1.0" stroke="#fff" stroke-width="1.0"/>
           <text x="356" y="261"
             font-family="'Share Tech Mono',monospace" font-size="9.5"
             fill="#e8f4ff" font-weight="bold" text-anchor="start"
             filter="url(#labelShadow)">KOTZEBUE</text>
- 
+
           <!-- Cape Espenberg: BELOW-CENTER, pushed down to not overlap Kotzebue Sound label -->
           <circle cx="252" cy="286" r="3.5" fill="#f5a623" fill-opacity="0.95" stroke="#fff" stroke-width="0.8"/>
           <text x="248" y="304"
             font-family="'Share Tech Mono',monospace" font-size="7.5"
             fill="#e8f4ff" fill-opacity="0.90" text-anchor="middle"
             filter="url(#labelShadow)">C. ESPENBERG</text>
- 
+
           <!-- Selawik: ABOVE-RIGHT -->
           <circle cx="467" cy="283" r="5.0" fill="#00c8ff" fill-opacity="0.95" stroke="#fff" stroke-width="0.9"/>
           <text x="476" y="277"
             font-family="'Share Tech Mono',monospace" font-size="9.0"
             fill="#e8f4ff" font-weight="bold" text-anchor="start"
             filter="url(#labelShadow)">SELAWIK</text>
- 
+
           <!-- Wales -->
           <circle cx="90" cy="351" r="3.0" fill="#f5a623" fill-opacity="0.86" stroke="#fff" stroke-width="0.7"/>
           <text x="98" y="347"
             font-family="'Share Tech Mono',monospace" font-size="7.5"
             fill="#b8d8f0" fill-opacity="0.84" text-anchor="start"
             filter="url(#labelShadow)">WALES</text>
- 
+
           <!-- ── RIVER LABELS (spaced and staggered to avoid overlap) ── -->
           <!-- NOATAK R: mid-river, high up away from Baird Mtns -->
           <text x="484" y="214" transform="rotate(-14 484 214)"
@@ -628,16 +674,16 @@ body{background:var(--bg);color:var(--text);font-family:'Spectral',Georgia,serif
             font-family="'Share Tech Mono',monospace" font-size="6.5"
             fill="#5abcde" fill-opacity="0.44"
             filter="url(#labelShadow)">MEADE R.</text>
- 
+
           <!-- ── ARCTIC CIRCLE LABEL ── -->
           <text x="8" y="288"
             font-family="'Share Tech Mono',monospace" font-size="7.5"
             fill="#f5a623" fill-opacity="0.65" letter-spacing="0.09em"
             filter="url(#labelShadow)">ARCTIC CIRCLE (66.5&#xB0;N)</text>
- 
+
           <!-- ── COMPASS ROSE (pinned bottom-right, outside mapContent so it doesn't zoom) ── -->
           </g><!-- end mapContent -->
- 
+
           <!-- Compass + scale stay fixed, outside the zoom group -->
           <g transform="translate(652,398)">
             <circle r="22" fill="#050e22" fill-opacity="0.82"
@@ -650,7 +696,7 @@ body{background:var(--bg);color:var(--text);font-family:'Spectral',Georgia,serif
               font-family="'Share Tech Mono',monospace" font-size="8"
               fill="#b8d8f0" fill-opacity="0.60">N</text>
           </g>
- 
+
           <!-- Scale bar (fixed) -->
           <g transform="translate(28,497)">
             <rect x="0" y="-3" width="105" height="6" fill="#050e22" fill-opacity="0.6"/>
@@ -665,7 +711,7 @@ body{background:var(--bg);color:var(--text);font-family:'Spectral',Georgia,serif
             <text x="105" y="-8" font-family="'Share Tech Mono',monospace" font-size="7"
               fill="#5a9ab5" fill-opacity="0.65" text-anchor="middle">200 km</text>
           </g>
- 
+
           <!-- Legend (fixed) -->
           <g transform="translate(446,368)">
             <rect x="0" y="0" width="244" height="108" rx="5"
@@ -691,7 +737,7 @@ body{background:var(--bg);color:var(--text);font-family:'Spectral',Georgia,serif
             <text x="43" y="100.5" font-family="'Share Tech Mono',monospace" font-size="7.5"
               fill="#b8d8f0" fill-opacity="0.82">Settlement / coastal feature</text>
           </g>
- 
+
           <!-- Zoom hint + attribution -->
           <text x="350" y="515" text-anchor="middle"
             font-family="'Share Tech Mono',monospace" font-size="6.5"
@@ -699,12 +745,12 @@ body{background:var(--bg);color:var(--text);font-family:'Spectral',Georgia,serif
           <text x="695" y="515"
             font-family="'Share Tech Mono',monospace" font-size="6.5"
             fill="#3a6880" text-anchor="end" letter-spacing="0.03em">After Burch (1998, 2005)</text>
- 
+
         </svg><!-- end mainMap -->
       </div><!-- end map-zoom-wrap -->
     </div><!-- end map-svg-wrap -->
     <p class="map-caption">Based on Burch (1998, 2005). The shaded region traces the traditional Northwest Alaska Iñupiaq homeland, bounded on the coast between Cape Thompson (north) and Cape Espenberg (south), with the interior boundary following the Baird and De Long mountain divides. Not drawn to exact scale.</p>
- 
+
     <div class="map-key">
       <div class="map-key-item">
         <div class="map-key-place">Cape Thompson &amp; Cape Espenberg</div>
@@ -728,26 +774,116 @@ body{background:var(--bg);color:var(--text);font-family:'Spectral',Georgia,serif
       </div>
     </div>
   </section>
- 
+
   <div class="sep"></div>
- 
+
   <!-- Modules -->
   <div class="section-label">Five Learning Modules</div>
   <section class="modules" id="modules" aria-label="Learning modules"></section>
- 
+
   <div class="sep"></div>
- 
+
+
+  <div class="section-label">Scene Analysis</div>
+  <section id="analysis" aria-label="Scene analysis">
+    <p class="analysis-intro">The following scenes from <em>Never Alone</em> (Upper One Games, 2014) illustrate how the game embeds Iñupiaq cultural values, spiritual beliefs, and lived history into its narrative and gameplay mechanics. Each clip is accompanied by a description and a scholarly interpretation.</p>
+
+    <!-- ── SCENE 1 ── -->
+    <article class="scene-card">
+      <div class="scene-header">
+        <div class="scene-num">01</div>
+        <div class="scene-meta">
+          <div class="scene-title">Nuna and the Arctic Fox</div>
+          <div class="scene-cite">Upper One Games, 2014</div>
+        </div>
+        <span class="scene-tag">Cooperation &amp; Spirituality</span>
+      </div>
+      <video class="scene-video" controls preload="metadata"
+        aria-label="Scene 1: Nuna and the Arctic Fox">
+        <source src="Scene_1_-_Intro.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+      </video>
+      <div class="scene-body">
+        <div class="scene-block scene-desc-block">
+          <div class="scene-block-label">Scene Description</div>
+          <p class="scene-block-text">Nuna slows down to take a breath after being saved from the bear. She looks around and sees the Arctic fox. It leaps up to her and they both play in the snow for a moment before continuing the journey as a pair (Upper One Games, 2014).</p>
+        </div>
+        <div class="scene-block scene-analysis-block">
+          <div class="scene-block-label">Analysis</div>
+          <p class="scene-block-text">The clip presents the main goal of the game, cooperation and collaboration. This also ties into the narrative, specifically the lessons it teaches of peace and respect for cultures. In the game, the player characters never use violence as a solution, emphasizing the Native Alaskan values for nonviolence. Additionally, with the fox serving as a guide, and using spirits to help you throughout the game, the clip shows the importance of a human's respect for nature while also depicting the belief of spirits helping to guide one in life (Cobb, 2022).</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- ── SCENE 2 ── -->
+    <article class="scene-card">
+      <div class="scene-header">
+        <div class="scene-num">02</div>
+        <div class="scene-meta">
+          <div class="scene-title">The Manslayer and the Village</div>
+          <div class="scene-cite">Upper One Games, 2014</div>
+        </div>
+        <span class="scene-tag">Inua &amp; Societal Balance</span>
+      </div>
+      <video class="scene-video" controls preload="metadata"
+        aria-label="Scene 2: The Manslayer and the Village">
+        <source src="Scene_2_-_Villain_Intro.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+      </video>
+      <div class="scene-body">
+        <div class="scene-block scene-desc-block">
+          <div class="scene-block-label">Scene Description</div>
+          <p class="scene-block-text">Nuna's village was impacted by an endless blizzard, which prevents hunters from her tribe from hunting food and resources. Nuna decides to travel into the frozen tundra to discover the source of the blizzard, along with a newfound friend, an Arctic fox. However, as her family is left at home (qargi), a manslayer attacks the village while searching for a magical bola that was entrusted to Nuna by a mysterious Owl man (Upper One Games, 2014).</p>
+        </div>
+        <div class="scene-block scene-analysis-block">
+          <div class="scene-block-label">Analysis</div>
+          <p class="scene-block-text">In Inupiat culture, every aspect of nature, including snow, animals, and more, is understood to possess a spirit, or inua (Fitzhugh &amp; Kaplan, 1982). If you treat animals with respect, their spirits will help you return. For instance, Nuna and the Arctic fox are partners that treat one another with respect. The manslayer, however, represents the exact opposite of Inupiat survival values; he disrupts societal balance, relying on violence to take what he wants. Because of this, he does not have the same ancestral guidance (Bola given by Owl Man) and spiritual bond with nature (The Fox) as Nuna (Upper One Games, 2014).</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- ── SCENE 3 ── -->
+    <article class="scene-card">
+      <div class="scene-header">
+        <div class="scene-num">03</div>
+        <div class="scene-meta">
+          <div class="scene-title">The Burned Village</div>
+          <div class="scene-cite">Upper One Games, 2014</div>
+        </div>
+        <span class="scene-tag">Aurora &amp; Loss</span>
+      </div>
+      <video class="scene-video" controls preload="metadata"
+        aria-label="Scene 3: The Burned Village">
+        <source src="Scene_3_-_Village.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+      </video>
+      <div class="scene-body">
+        <div class="scene-block scene-desc-block">
+          <div class="scene-block-label">Scene Description</div>
+          <p class="scene-block-text">"The Northern Lights cast an eerie glow on the village below."</p>
+        </div>
+        <div class="scene-block scene-analysis-block">
+          <div class="scene-block-label">Analysis</div>
+          <p class="scene-block-text">The presence of the northern lights on the background of a burned village similar to her own creates a striking and haunting visual. She does not have the time for grieving: after finding her village, she needed to run away from the man and escape from the insides of the whale. There is a sense of eeriness in both of the elements, the Northern Lights and the Burned Village, and another element that went under the radar is the whispering in the background, which could be spirits or perhaps remnants of the previous residents of the village. Most people would dream of seeing the Northern Lights in their glory, being amazed and astonished at the sight of it, but in her scenario, it may be just an afterthought after seeing her village burned down and being reminded of it by encountering another in her journey.</p>
+        </div>
+      </div>
+    </article>
+
+  </section>
+
+  <div class="sep"></div>
+
   <!-- References -->
   <section class="refs-section" id="references">
     <div class="refs-title">References</div>
     <div class="refs-sub">APA, 6th Edition</div>
     <ol class="refs-list" id="refsList"></ol>
   </section>
- 
+
   <p class="footer-note">Interactive concept for educational purposes. Iñupiaq Heritage Digital Learning Guide.</p>
- 
+
 </main>
- 
+
 <!-- GLOSSARY OVERLAY -->
 <div class="glos-overlay" id="glosOverlay" onclick="handleOverlayClick(event)">
   <div class="glos-panel" onclick="event.stopPropagation()" role="dialog" aria-label="Glossary">
@@ -758,7 +894,7 @@ body{background:var(--bg);color:var(--text);font-family:'Spectral',Georgia,serif
     <div id="glosTerms"></div>
   </div>
 </div>
- 
+
 <script>
 // DATA
 const MODULES = [
@@ -998,7 +1134,7 @@ const MODULES = [
     ]
   }
 ];
- 
+
 const GLOSSARY = [
   {word:"KISIMA INGITCHUNA",def:"Iñupiaq phrase meaning 'I am Not Alone,' the full title of the Never Alone video game ('The Making of Never Alone,' 2019)."},
   {word:"IÑUPIAQ",def:"The Indigenous people of northern and northwestern Alaska, and their language."},
@@ -1015,19 +1151,34 @@ const GLOSSARY = [
   {word:"CULTURAL INSIGHTS",def:"Twenty-six unlockable mini-documentary interviews with Iñupiaq community members included in Never Alone ('The Making of Never Alone,' 2019)."},
   {word:"COOK INLET TRIBAL COUNCIL (CITC)",def:"The Alaska Native nonprofit organization that founded and produced Never Alone, the first Indigenous-owned video game company in the United States ('The Making of Never Alone,' 2019)."}
 ];
- 
+
 const REFERENCES = [
-  "Burch, E. S., Jr. (2005). <em>Alliance and Conflict: The World System of the Inupiaq Eskimos.</em> Ernest S. Burch Jr.: 9781552381427 - AbeBooks. <a href=\"https://www.abebooks.com/9781552381427/Alliance-Conflict-World-System-Inupiaq-1552381420/plp\" target=\"_blank\" rel=\"noopener\">https://www.abebooks.com/9781552381427/Alliance-Conflict-World-System-Inupiaq-1552381420/plp</a>",
-  "Dayo, D. M. (2001). Sharing Our Pathways: A Newsletter of the Alaska Rural Systemic Initiative, 2001. <em>Sharing Our Pathways, 6,</em> n1-5.",
-  "The Iñupiaq Eskimo nations of northwest Alaska : Burch, Ernest S., 1938- : Free Download, Borrow, and Streaming : Internet Archive. (1998). Internet Archive. <a href=\"https://archive.org/details/inupiaqeskimonat0000burc\" target=\"_blank\" rel=\"noopener\">https://archive.org/details/inupiaqeskimonat0000burc</a>",
-  "The making of Never Alone (Kisima Inŋitchuŋa): Celebrating a people and a language. (2019, March 11). Cultural Survival. <a href=\"https://www.culturalsurvival.org/publications/cultural-survival-quarterly/making-never-alone-kisima-innitchuna-celebrating-people\" target=\"_blank\" rel=\"noopener\">https://www.culturalsurvival.org/publications/cultural-survival-quarterly/making-never-alone-kisima-innitchuna-celebrating-people</a>",
+  // B - Burch 1998
+  "Burch, E. S. (1998). <em>The Iñupiaq Eskimo nations of northwest Alaska.</em> University of Alaska Press. <a href=\"https://archive.org/details/inupiaqeskimonat0000burc\" target=\"_blank\" rel=\"noopener\">https://archive.org/details/inupiaqeskimonat0000burc</a>",
+  // B - Burch 2005
+  "Burch, E. S., Jr. (2005). <em>Alliance and conflict: The world system of the Inupiaq Eskimos.</em> <a href=\"https://www.abebooks.com/9781552381427/Alliance-Conflict-World-System-Inupiaq-1552381420/plp\" target=\"_blank\" rel=\"noopener\">https://www.abebooks.com/9781552381427/Alliance-Conflict-World-System-Inupiaq-1552381420/plp</a>",
+  // C - Cobb 2022
+  "Cobb, D. (2022, April 29). For fox sake: The importance of Never Alone in the video game industry. <em>The University of North Carolina at Chapel Hill.</em> <a href=\"https://danielmcobb.web.unc.edu/for-fox-sake-the-importance-of-never-alone-in-the-video-game-industry-by-kasey-linton/\" target=\"_blank\" rel=\"noopener\">https://danielmcobb.web.unc.edu/for-fox-sake-the-importance-of-never-alone-in-the-video-game-industry-by-kasey-linton/</a>",
+  // D - Dayo 2001
+  "Dayo, D. M. (2001). Sharing our pathways: A newsletter of the Alaska Rural Systemic Initiative, 2001. <em>Sharing Our Pathways, 6,</em> n1–5.",
+  // F - Fitzhugh & Kaplan 1982
+  "Fitzhugh, W., &amp; Kaplan, S. (Eds.). (1982). <em>Inua: Spirit world of the Bering Sea Eskimo.</em> Smithsonian Institution Press.",
+  // G - Geophysical Institute n.d.
+  "Geophysical Institute, University of Alaska Fairbanks. (n.d.). Aurora in Eskimo legend. <em>Alaska Science Forum.</em> <a href=\"https://www.gi.alaska.edu/alaska-science-forum/aurora-eskimo-legend\" target=\"_blank\" rel=\"noopener\">https://www.gi.alaska.edu/alaska-science-forum/aurora-eskimo-legend</a>",
+  // M - The making of Never Alone 2019 (alphabetize under Making)
+  "The making of Never Alone (Kisima Inŋitchuŋa): Celebrating a people and a language. (2019, March 11). <em>Cultural Survival.</em> <a href=\"https://www.culturalsurvival.org/publications/cultural-survival-quarterly/making-never-alone-kisima-innitchuna-celebrating-people\" target=\"_blank\" rel=\"noopener\">https://www.culturalsurvival.org/publications/cultural-survival-quarterly/making-never-alone-kisima-innitchuna-celebrating-people</a>",
+  // M - Merkur 1991 (alphabetize under Merkur)
+  "Merkur, D. (1991). <em>Powers which we do not know: The gods and spirits of the Inuit.</em> University Press of Idaho.",
+  // U - Upper One Games 2014
+  "Upper One Games. (2014). <em>Never Alone (Kisima Iŋitchuŋa)</em> [Video game]. E-Line Media.",
+  // V - View of Living Our Cultures 2010 (alphabetize under View)
   "View of Living Our Cultures: Sharing Our Heritage: The First Peoples of Alaska (Crowell, Worl, Ongtooguk, and Biddison, eds.). (2010). <a href=\"https://scholarworks.iu.edu/journals/index.php/mar/article/view/1224/1281\" target=\"_blank\" rel=\"noopener\">https://scholarworks.iu.edu/journals/index.php/mar/article/view/1224/1281</a>"
 ];
- 
+
 // STATE
 let openModule = -1;
 const visited = new Set();
- 
+
 // RENDER
 function renderModules() {
   const container = document.getElementById('modules');
@@ -1075,14 +1226,14 @@ function renderModules() {
       </div>
     </article>
   `).join('');
- 
+
   Array.from(document.querySelectorAll('.module-card')).forEach(card => {
     card.addEventListener('keydown', e => {
       if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); card.click(); }
     });
   });
 }
- 
+
 function renderGlossary() {
   document.getElementById('glosTerms').innerHTML = GLOSSARY.map(g => `
     <div class="glos-item">
@@ -1091,17 +1242,17 @@ function renderGlossary() {
     </div>
   `).join('');
 }
- 
+
 function renderReferences() {
   document.getElementById('refsList').innerHTML = REFERENCES.map(r => `<li>${r}</li>`).join('');
 }
- 
+
 // INTERACTIONS
 function toggleModule(i) {
   const card = document.getElementById(`mc${i}`);
   const body = document.getElementById(`mb${i}`);
   const isOpen = card.classList.contains('open');
- 
+
   MODULES.forEach((_, idx) => {
     const c = document.getElementById(`mc${idx}`);
     const b = document.getElementById(`mb${idx}`);
@@ -1109,7 +1260,7 @@ function toggleModule(i) {
     c.setAttribute('aria-expanded', 'false');
     b.setAttribute('aria-hidden', 'true');
   });
- 
+
   if (!isOpen) {
     card.classList.add('open');
     card.setAttribute('aria-expanded', 'true');
@@ -1123,7 +1274,7 @@ function toggleModule(i) {
     updateProgress();
   }
 }
- 
+
 function switchTab(e, mi, ti) {
   e.stopPropagation();
   const card = document.getElementById(`mc${mi}`);
@@ -1135,7 +1286,7 @@ function switchTab(e, mi, ti) {
     p.classList.toggle('active', j === ti);
   });
 }
- 
+
 function updateProgress() {
   Array.from(document.querySelectorAll('.prog-dot')).forEach((d, i) => {
     d.classList.remove('visited', 'current');
@@ -1143,14 +1294,14 @@ function updateProgress() {
     if (i === openModule) { d.classList.remove('visited'); d.classList.add('current'); }
   });
 }
- 
+
 function goToModule(i) {
   const card = document.getElementById(`mc${i}`);
   if (!card) return;
   if (!card.classList.contains('open')) toggleModule(i);
   setTimeout(() => card.scrollIntoView({behavior:'smooth', block:'start'}), 100);
 }
- 
+
 function openGlossary()  { document.getElementById('glosOverlay').classList.add('open'); }
 function closeGlossary() { document.getElementById('glosOverlay').classList.remove('open'); }
 function handleOverlayClick(e) { if (e.target === document.getElementById('glosOverlay')) closeGlossary(); }
@@ -1158,7 +1309,8 @@ function scrollToTop()     { window.scrollTo({top:0, behavior:'smooth'}); }
 function scrollToModules() { document.getElementById('modules').scrollIntoView({behavior:'smooth'}); }
 function scrollToMap()     { document.getElementById('geo').scrollIntoView({behavior:'smooth'}); }
 function scrollToRefs()    { document.getElementById('references').scrollIntoView({behavior:'smooth'}); }
- 
+function scrollToAnalysis() { document.getElementById('analysis').scrollIntoView({behavior:'smooth'}); }
+
 // STARFIELD
 function buildStars() {
   const container = document.getElementById('stars');
@@ -1175,14 +1327,14 @@ function buildStars() {
     return `<div class="star" style="left:${x}%;top:${y}%;width:${size}px;height:${size}px;--d:${dur}s;--delay:${del}s;--op:${op}"></div>`;
   }).join('');
 }
- 
+
 // INIT
 buildStars();
 renderModules();
 renderGlossary();
 renderReferences();
- 
- 
+
+
 // ── MAP ZOOM / PAN ───────────────────────────────────────────────────────
 (function () {
   var S = 1, TX = 0, TY = 0;
@@ -1190,15 +1342,15 @@ renderReferences();
   var MIN_S = 1, MAX_S = 10;
   var dragging = false, dSX, dSY, dTX, dTY;
   var svg, grp, lvl;
- 
+
   function clamp(v, lo, hi) { return Math.min(hi, Math.max(lo, v)); }
- 
+
   function applyT() {
     grp.setAttribute('transform',
       'translate(' + TX.toFixed(2) + ',' + TY.toFixed(2) + ') scale(' + S.toFixed(3) + ')');
     if (lvl) lvl.textContent = Math.round(S * 100) + '%';
   }
- 
+
   function zoomAt(factor, cx, cy) {
     var ns = clamp(S * factor, MIN_S, MAX_S);
     if (Math.abs(ns - S) < 0.001) return;
@@ -1208,7 +1360,7 @@ renderReferences();
     S = ns;
     applyT();
   }
- 
+
   function svgCoords(clientX, clientY) {
     var rect = svg.getBoundingClientRect();
     return {
@@ -1216,13 +1368,13 @@ renderReferences();
       y: ((clientY - rect.top)  / rect.height) * H
     };
   }
- 
+
   function init() {
     svg = document.getElementById('mainMap');
     grp = document.getElementById('mapContent');
     lvl = document.getElementById('mzLevel');
     if (!svg || !grp) return;
- 
+
     // Button controls
     var btnIn  = document.getElementById('mzIn');
     var btnOut = document.getElementById('mzOut');
@@ -1232,14 +1384,14 @@ renderReferences();
     if (btnRst) btnRst.addEventListener('click', function () {
       S=1; TX=0; TY=0; applyT();
     });
- 
+
     // Mouse wheel
     svg.addEventListener('wheel', function (e) {
       e.preventDefault();
       var p = svgCoords(e.clientX, e.clientY);
       zoomAt(e.deltaY < 0 ? 1.25 : 0.8, p.x, p.y);
     }, { passive: false });
- 
+
     // Mouse drag
     svg.addEventListener('mousedown', function (e) {
       if (e.button !== 0) return;
@@ -1262,7 +1414,7 @@ renderReferences();
       dragging = false;
       if (svg) svg.classList.remove('dragging');
     });
- 
+
     // Touch
     var lastDist = null, tSX, tSY;
     svg.addEventListener('touchstart', function (e) {
@@ -1278,7 +1430,7 @@ renderReferences();
         lastDist = Math.sqrt(dx*dx + dy*dy);
       }
     }, { passive: false });
- 
+
     svg.addEventListener('touchmove', function (e) {
       e.preventDefault();
       if (e.touches.length === 1 && lastDist === null) {
@@ -1299,19 +1451,17 @@ renderReferences();
         lastDist = dist;
       }
     }, { passive: false });
- 
+
     svg.addEventListener('touchend', function () { lastDist = null; });
   }
- 
+
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else {
     init();
   }
 })();
- 
+
 </script>
 </body>
 </html>
- 
-
